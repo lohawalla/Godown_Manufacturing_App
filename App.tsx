@@ -1,6 +1,6 @@
-import { GluestackUIProvider, Text, Theme } from '@gluestack-ui/themed';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { config } from "@gluestack-ui/config"
+import {GluestackUIProvider, Text, Theme} from '@gluestack-ui/themed';
+import {QueryClient, QueryClientProvider} from '@tanstack/react-query';
+import {config} from '@gluestack-ui/config';
 import ApplicationNavigator from './src/navigators/Application';
 import AuthGuard from './src/components/auth/AuthGuard';
 
