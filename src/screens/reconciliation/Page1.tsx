@@ -3,8 +3,8 @@ import React, { useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import Navbar from '../Navbar/Navbar'
 import { TouchableOpacity } from 'react-native-gesture-handler'
-import ToggleButton from '../../components/atoms/ToggleHeader/ToggleButton'
 import ReconciliationCard from '../../components/molecules/ReconciliationCard/ReconciliationCard'
+import ToggleButton from '../../components/molecules/ToggleHeader/ToggleButton'
 
 const DATA = [
       {
