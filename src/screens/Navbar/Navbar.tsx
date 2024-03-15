@@ -18,13 +18,13 @@ const Navbar = ({ navigation }: any) => {
                 <Menu
                     placement="top"
                     trigger={({ ...triggerProps }) => {
-                        return (
+                    return (
                             <Button {...triggerProps}>
                                 <ButtonText>Menu</ButtonText>
                             </Button>
                         )
                     }}
-                >
+                    >
                     <MenuItem key="Community" textValue="Community" onPress={() => auth.actions.logout()}>
                         <Icon as={SettingsIcon} size="sm" mr="$2" />
                         <MenuItemLabel size="sm">Logout</MenuItemLabel>

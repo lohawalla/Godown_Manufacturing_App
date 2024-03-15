@@ -4,6 +4,7 @@ import LinearGradient from 'react-native-linear-gradient'
 import CardPrimaryBtn from '../../atoms/Reconciliation/CardPrimaryBtn'
 import CardSecondaryBtn from '../../atoms/Reconciliation/CardSecondaryBtn'
 
+// Reconciliation card
 const ReconciliationCard = (props:{theme:string}) => {
     let {theme}=props
   return (
