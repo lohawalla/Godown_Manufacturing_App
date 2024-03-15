@@ -23,27 +23,20 @@ const index = () => {
                     <PartiListCard color={'white'}
                         backgroundColor={'#1E293B'}
                         text={'IRON'}
-                        borderWidth={1}/>
+                        borderWidth={1} />
                 </View>
                 <View style={{ height: 2, backgroundColor: '#CBD5E1' }}></View>
                 <View>
                     <View>
                         {/* Top */}
                         <View >
-                            <View style={{ marginVertical: 10 }}>
-                                <RadioButton label={'Raw Material 1'} isSelected={selectedBtn === 1} onPress={() => handleRadio(1)} />
+                            <View>  //loop
+                                <View style={{ marginVertical: 10 }}>
+                                    <RadioButton label={'Raw Material 1'} isSelected={selectedBtn === 1} onPress={() => handleRadio(1)} />
+                                </View>
+                                {selectedBtn === 1 && <MaterialInfo />}
+                                <View style={{ height: 1, backgroundColor: '#CBD5E1' }}></View>
                             </View>
-                            {selectedBtn === 1 && <MaterialInfo />}
-                            <View style={{ height: 1, backgroundColor: '#CBD5E1' }}></View>
-                            <View style={{ marginVertical: 20 }}>
-                                <RadioButton label={'Raw Material 2'} isSelected={selectedBtn === 2} onPress={() => handleRadio(2)} />
-                            </View>
-                            {selectedBtn === 2 && <MaterialInfo />}
-                            <View style={{ height: 2, backgroundColor: '#CBD5E1' }}></View>
-                            <View style={{ marginVertical: 20 }}>
-                                <RadioButton label={'Raw Material 3'} isSelected={selectedBtn === 3} onPress={() => handleRadio(3)} />
-                            </View>
-                            {selectedBtn === 3 && <MaterialInfo />}
                         </View>
                     </View>
                 </View>
