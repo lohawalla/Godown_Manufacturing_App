@@ -1,24 +1,34 @@
-import {StyleSheet, Text, View, Image} from 'react-native';
+import {Text, View, Image, ImageSourcePropType, StyleSheet} from 'react-native';
 import React from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome';
-const ItemCard = () => {
+
+interface ItemCardProps {
+  image: ImageSourcePropType;
+  itemName: string;
+  quantity: string;
+  lastUpdatedDate: string;
+}
+
+const ItemCard: React.FC<ItemCardProps> = ({
+  image,
+  itemName,
+  quantity,
+  lastUpdatedDate,
+}) => {
   return (
     <View style={styles.mainContainer}>
       <View style={styles.container}>
         <View>
-          <Image
-            source={require('../../../assets/item.jpeg')}
-            style={styles.image}
-          />
+          <Image source={image} style={styles.image} />
         </View>
         <View style={styles.infoContainer}>
           <View>
             <View>
-              <Text style={styles.nameText}>ITEM NAME</Text>
+              <Text style={styles.nameText}>{itemName}</Text>
               <Text style={styles.qtyText}>Quantity Present</Text>
             </View>
             <View style={styles.valueWrapper}>
-              <Text style={styles.valueText}>600kg</Text>
+              <Text style={styles.valueText}>{quantity}</Text>
             </View>
           </View>
           <View>
@@ -28,7 +38,7 @@ const ItemCard = () => {
       </View>
       <View style={styles.lastContainer}>
         <Text style={styles.qtyText}>Last Updated</Text>
-        <Text style={styles.valueText}>17/10/23</Text>
+        <Text style={styles.valueText}>{lastUpdatedDate}</Text>
       </View>
     </View>
   );
