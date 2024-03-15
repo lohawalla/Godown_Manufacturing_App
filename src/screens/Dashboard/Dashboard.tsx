@@ -6,7 +6,6 @@ import { useAuthContext } from '../../components/auth/AuthGuard';
 import Navbar from '../Navbar/Navbar';
 import Card from '../../components/atoms/Card/Card';
 import ImageIndex from '../../theme/AssestIndex';
-
 const Dashboard = ({ navigation }: any) => {
     const auth: any = useAuthContext()
     console.log(auth);
@@ -18,7 +17,9 @@ const Dashboard = ({ navigation }: any) => {
         <SafeAreaView style={{ backgroundColor: 'white', flex: 1 }}>
             <Navbar navigation={navigation} />
             <View style={{ flexDirection: 'column', alignItems: 'center', }}>
-                <TouchableOpacity style={{ marginVertical: 10 }}>
+                <TouchableOpacity 
+                  onPress={() => navigation.navigate("Page1")}
+                    style={{ marginVertical: 10 }}>
                     <Card name={'Reconciliation'} image={ImageIndex.notepad} height={150}/>
                 </TouchableOpacity>
                 <TouchableOpacity style={{ marginVertical: 60 }}>

@@ -16,6 +16,7 @@ import Assign from '../screens/Assign/Assign';
 import Transfer from '../screens/Transfer/Transfer';
 import History from '../screens/History/History';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import Page1 from '../screens/reconciliation/Page1';
 
 const Stack = createStackNavigator<any>();
 const Tab = createBottomTabNavigator();
@@ -27,7 +28,6 @@ const Home: React.FC = () => {
             initialRouteName='Dashboard'
             screenOptions={({ route }) => ({
                 tabBarOptions: {
-                    tabBarShowLabel: true,
                 },
             } as BottomTabNavigationOptions)}
         >
@@ -71,6 +71,12 @@ const ApplicationNavigator = () => {
                     screenOptions={{ headerShown: false, animationTypeForReplace: 'push' }}
                 >
                     <Stack.Screen name='HomeTabs' component={Home} />
+                    <Stack.Screen
+                        name='Page1'
+                        component={Page1}
+                        options={{
+                        title: "Reconciliation Page"
+                    }}/>
                 </Stack.Navigator>
             </NavigationContainer>
         </GestureHandlerRootView>
