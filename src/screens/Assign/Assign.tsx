@@ -21,25 +21,8 @@ import {BottomSheetModal, BottomSheetModalProvider} from '@gorhom/bottom-sheet';
 import SelectedCard from '../../components/atoms/SelectedCard/SelectedCard';
 import {CodeScannerPage} from '../../components/molecules/Scanner/CodeScannerPage';
 import DataComponent from './DataComponent';
-import {useQuery} from '@tanstack/react-query';
-import axios from 'axios';
-
-const fetchShelfList = () => {
-  return axios.get('http://localhost:3000/shelfList');
-};
 
 const Assign = ({navigation}: any) => {
-  const {
-    data: shelf,
-    isLoading: shelfLoading,
-    isError: shelfError,
-  } = useQuery({
-    queryKey: ['shelfList'],
-    queryFn: fetchShelfList,
-  });
-
-  console.log('shelf:', shelf);
-
   const bottomSheetModalRef = useRef<BottomSheetModal>(null);
   const snapPoints = useMemo(() => ['25%', '50%', '98%'], []);
   const [show, setShow] = useState(false);
@@ -48,26 +31,24 @@ const Assign = ({navigation}: any) => {
     console.log('HANDLE SHEET CHANGES', index);
   }, []);
   console.log('Hie212', scannedValue);
-  // const [shelf, setShelf] = useState<any[]>([
-  //     {
-  //         "id": 1,
-  //         "name": "John"
-  //     },
-  //     {
-  //         "id": 2,
-  //         "name": "Jane"
-  //     },
-  //     {
-  //         "id": 3,
-  //         "name": "Alice"
-  //     },
-  //     {
-  //         "id": 4,
-  //         "name": "Bob"
-  //     }
-  // ]
-  // );
-
+  const [shelf, setShelf] = useState<any[]>([
+    {
+      id: 1,
+      name: 'John',
+    },
+    {
+      id: 2,
+      name: 'Jane',
+    },
+    {
+      id: 3,
+      name: 'Alice',
+    },
+    {
+      id: 4,
+      name: 'Bob',
+    },
+  ]);
   const [aisle, setAisle] = useState<any[]>([
     {
       id: 1,
