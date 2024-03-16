@@ -1,11 +1,11 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
-const CardSecondaryBtn = (props:{width:any}) => {
+const CardSecondaryBtn = (props:{width:any, secondaryBtn:string}) => {
     let {width}=props
   return (
     <View style={[styles.TopTitle, styles.TopMarginLeft, {width:props.width}]}>
-        <Text style={{color:'white'}} >Shelf code-5</Text>
+        <Text style={{color:'white'}} >{props.secondaryBtn}</Text>
     </View>
   )
 }
