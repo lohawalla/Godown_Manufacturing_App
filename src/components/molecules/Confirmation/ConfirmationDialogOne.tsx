@@ -42,8 +42,6 @@ const ConfirmationDialogeOne: React.FC<ConfirmationDialogProps> = ({
   );
 };
 
-export default ConfirmationDialogeOne;
-
 const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
@@ -99,3 +97,5 @@ const styles = StyleSheet.create({
     width: 1,
   },
 });
+
+export default ConfirmationDialogeOne;
