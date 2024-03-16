@@ -8,6 +8,7 @@ const notepad = require('./assets/notepad.png');
 const shelf = require('./assets/Shelf.png');
 const aisle = require('./assets/aisle.png');
 const popupSuccess = require('./assets/popupSuccess.png')
+const godownLogo = require('./assets/godown.jpg')
 const ImageIndex = {
     logo,
     companyLogo,
@@ -18,6 +19,7 @@ const ImageIndex = {
     notepad,
     shelf,
     aisle,
-    popupSuccess
+    popupSuccess,
+    godownLogo
 }
 export default ImageIndex
