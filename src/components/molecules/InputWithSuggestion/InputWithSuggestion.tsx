@@ -16,6 +16,11 @@ const InputWithSuggestion = () => {
     '15426210000',
     '15426211111',
     '15426212222',
+    '15426823330',
+    '15926215283',
+    '15426211000',
+    '15426210111',
+    '15426652222',
   ];
   const [selectedRadio, setSelectedRadio] = useState<string | null>(null);
   const [inputValue, setInputValue] = useState('');
@@ -23,12 +28,17 @@ const InputWithSuggestion = () => {
   const [showSuggestions, setShowSuggestions] = useState(false);
 
   const handleUpBtn = () => {
-    setShowSuggestions(false);
+    setShowSuggestions(!showSuggestions);
+  };
+
+  const handleDown = () => {
+    setShowSuggestions(!showSuggestions);
   };
 
   const handleRadioButtonPress = (label: string) => {
     setInputValue(label);
     setSelectedRadio(label);
+    setShowSuggestions(false);
   };
 
   const handleInputChange = (text: string) => {
@@ -63,15 +73,19 @@ const InputWithSuggestion = () => {
           style={inputValue ? {color: 'white'} : null}
         />
 
-        <TouchableOpacity>
-          <Icon name="angle-down" size={24} color="black" />
+        <TouchableOpacity onPress={handleUpBtn}>
+          <Icon
+            name="angle-down"
+            size={24}
+            color="black"
+            onPress={handleDown}
+          />
           {inputValue !== '' && (
             <Icon
               name="angle-up"
               size={24}
               color="white"
               style={{marginTop: -30}}
-              onPress={handleUpBtn}
             />
           )}
         </TouchableOpacity>
@@ -82,6 +96,7 @@ const InputWithSuggestion = () => {
             data={matchedNumbers}
             renderItem={renderItem}
             keyExtractor={item => item}
+            style={{height: 200}}
           />
         </View>
       )}

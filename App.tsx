@@ -10,9 +10,9 @@ export default function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <GluestackUIProvider config={config}>
-        {/* <AuthGuard> */}
+        <AuthGuard>
           <ApplicationNavigator />
-        {/* </AuthGuard> */}
+        </AuthGuard>
       </GluestackUIProvider>
     </QueryClientProvider>
   );
