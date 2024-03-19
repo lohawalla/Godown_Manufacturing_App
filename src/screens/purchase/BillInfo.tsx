@@ -16,7 +16,7 @@ const BillInfo = ({ navigation }: any) => {
   return (
     <View>
       <Navbar/>
-      <RawMaterialCard data={data}/>
+      <RawMaterialCard />
     </View>
   )
 }

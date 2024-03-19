@@ -4,12 +4,17 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 
 interface SearchInputProps {
   value: string;
+  width: number;
   onChangeText: ((text: string) => void) | undefined;
 }
 
-const SearchInput: React.FC<SearchInputProps> = ({value, onChangeText}) => {
+const SearchInput: React.FC<SearchInputProps> = ({
+  value,
+  onChangeText,
+  width,
+}) => {
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, {width}]}>
       <Icon
         name="search"
         size={24}
@@ -31,7 +36,7 @@ const styles = StyleSheet.create({
   container: {
     borderWidth: 1,
     borderColor: 'rgba(148, 163, 184, 1)',
-    width: 310,
+
     borderRadius: 100,
     flexDirection: 'row',
     alignItems: 'center',

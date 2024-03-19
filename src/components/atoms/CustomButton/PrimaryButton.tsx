@@ -4,21 +4,24 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 
 interface CustomButtonProps {
   text: string;
+  width: number;
   onPress: () => void;
 }
 
-const PrimaryButton: React.FC<CustomButtonProps> = ({text, onPress}) => {
+const PrimaryButton: React.FC<CustomButtonProps> = ({text, width, onPress}) => {
   return (
-    <TouchableOpacity onPress={onPress} style={styles.mainContainer}>
+    <View style={styles.mainContainer}>
+    <TouchableOpacity onPress={onPress}>
       <View style={styles.textContainer}>
         <Text style={styles.text}>{text}</Text>
         <Icon
           name="long-arrow-right"
           size={16}
           color="rgba(255, 255, 255, 1)"
-        />
+          />
       </View>
     </TouchableOpacity>
+  </View>
   );
 };
 
@@ -26,7 +29,7 @@ export default PrimaryButton;
 
 const styles = StyleSheet.create({
   mainContainer:{
-    alignItems:'center'
+    marginLeft:'4%'
   },
   textContainer: {
     flexDirection: 'row',

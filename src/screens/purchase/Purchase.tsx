@@ -18,7 +18,7 @@ const Purchase = ({navigation}:any):JSX.Element => {
     }
 
   const { isPending, error, data }:any = useQuery({
-    queryKey: ['reconcileData'],
+    queryKey: ['salesBillList'],
       queryFn: fetchSalesData
     })
   function next(){
@@ -45,7 +45,8 @@ const Purchase = ({navigation}:any):JSX.Element => {
             keyExtractor={item => item.id}
             />
         </View>} */}
-        <PrimaryButton text='Next' onPress={next}/>
+          <PrimaryButton width={300} text='Next' onPress={next}/>
+
     </SafeAreaView>
   )
 }

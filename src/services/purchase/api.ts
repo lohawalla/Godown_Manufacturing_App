@@ -3,6 +3,7 @@ import { salesBill, salesList } from "../ApiRoutes"
 
 export const fetchSalesData = async () => {
     const data = await apiCall("get",`${salesList}`)
+    console.log('-------->>>>>>>>>>',salesList)
     return data
 }
 

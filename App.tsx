@@ -13,7 +13,6 @@ export default function App() {
       <GluestackUIProvider config={config}>
         {/* <AuthGuard> */}
           <ApplicationNavigator />
-          {/* <BillInfo/> */}
         {/* </AuthGuard> */}
       </GluestackUIProvider>
     </QueryClientProvider>
