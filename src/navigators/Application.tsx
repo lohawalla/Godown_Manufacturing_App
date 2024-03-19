@@ -17,6 +17,8 @@ import Transfer from '../screens/Transfer/Transfer';
 import History from '../screens/History/History';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import Page1 from '../screens/reconciliation/Page1';
+import Purchase from '../screens/purchase/Purchase';
+import BillInfo from '../screens/purchase/BillInfo';
 
 const Stack = createStackNavigator<any>();
 const Tab = createBottomTabNavigator();
@@ -76,6 +78,18 @@ const ApplicationNavigator = () => {
                         component={Page1}
                         options={{
                         title: "Reconciliation Page"
+                    }}/>
+                    <Stack.Screen
+                        name='purchase'
+                        component={Purchase}
+                        options={{
+                        title: "purchage Page"
+                    }}/>
+                    <Stack.Screen
+                        name='BillInfo'
+                        component={BillInfo}
+                        options={{
+                        title: "Bill Info"
                     }}/>
                 </Stack.Navigator>
             </NavigationContainer>

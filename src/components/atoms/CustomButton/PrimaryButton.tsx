@@ -9,7 +9,7 @@ interface CustomButtonProps {
 
 const PrimaryButton: React.FC<CustomButtonProps> = ({text, onPress}) => {
   return (
-    <TouchableOpacity onPress={onPress}>
+    <TouchableOpacity onPress={onPress} style={styles.mainContainer}>
       <View style={styles.textContainer}>
         <Text style={styles.text}>{text}</Text>
         <Icon
@@ -25,6 +25,9 @@ const PrimaryButton: React.FC<CustomButtonProps> = ({text, onPress}) => {
 export default PrimaryButton;
 
 const styles = StyleSheet.create({
+  mainContainer:{
+    alignItems:'center'
+  },
   textContainer: {
     flexDirection: 'row',
     justifyContent: 'center',
@@ -33,6 +36,7 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     paddingHorizontal: 16,
     borderRadius: 8,
+    width:'96%'
   },
   text: {
     fontFamily: 'Lato',

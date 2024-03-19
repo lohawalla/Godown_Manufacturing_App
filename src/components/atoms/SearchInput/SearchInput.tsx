@@ -17,7 +17,7 @@ const SearchInput: React.FC<SearchInputProps> = ({value, onChangeText}) => {
         style={{marginRight: 8}}
       />
       <TextInput
-        placeholder="Search or Select..|"
+        placeholder="Search or Select.."
         value={value}
         onChangeText={onChangeText}
       />

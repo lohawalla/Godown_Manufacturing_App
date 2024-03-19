@@ -71,7 +71,6 @@ const Page1 = ({ navigation }: any):JSX.Element => {
       queryFn: fetchData
     })
 
-  console.log(data?.data.products[0].title)
   return (
     <SafeAreaView style={{ backgroundColor: 'white', flex: 1 }}>
         <Navbar/>
@@ -94,7 +93,7 @@ const Page1 = ({ navigation }: any):JSX.Element => {
         </View>}
         <Button
             title='Go to Home'
-            onPress={() => navigation.goBack()}
+            // onPress={() => navigation.goBack()}
         />
     </SafeAreaView>
   )
