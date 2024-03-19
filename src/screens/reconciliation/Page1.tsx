@@ -5,6 +5,8 @@ import Navbar from '../Navbar/Navbar'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import ReconciliationCard from '../../components/molecules/ReconciliationCard/ReconciliationCard'
 import ToggleButton from '../../components/molecules/ToggleHeader/ToggleButton'
+import axios from 'axios'
+import { useQuery } from '@tanstack/react-query'
 
 const DATA = [
       {
@@ -58,6 +60,17 @@ const Page1 = ({ navigation }: any):JSX.Element => {
     const toggleView=(val:boolean):void=>{ 
         setToggleBtn(val)
     }
+
+    const fetchData = async () => {
+      const response = await axios.get('https://dummyjson.com/products');
+      return response
+    };
+
+    const { isPending, error, data }:any = useQuery({
+      queryKey: ['reconcileData'],
+      queryFn: fetchData
+    })
+
   return (
     <SafeAreaView style={{ backgroundColor: 'white', flex: 1 }}>
         <Navbar/>
@@ -65,8 +78,8 @@ const Page1 = ({ navigation }: any):JSX.Element => {
 
        {toggleBtn && <View>
             <FlatList
-            data={DATA}
-            renderItem={({item}):any => <ReconciliationCard theme="#d0e4fa"/>}
+            data={data?.data.products}
+            renderItem={({item}:any):JSX.Element => <ReconciliationCard primaryBtn={"Shelf No. S-509s"} secondaryBtn={"Shelf code-5"} aisleNumber={"Aisle Number"} aisleCode={"Aisle Code"} scode={"S-012"} scodetwo={"s-014"} theme="#d0e4fa"/>}
             keyExtractor={item => item.id}
             />
         </View>}
@@ -74,16 +87,13 @@ const Page1 = ({ navigation }: any):JSX.Element => {
         {!toggleBtn && <View>
             <FlatList
             data={DATA}
-            renderItem={({item}):any => <ReconciliationCard theme="#c7e5df"/>}
+            renderItem={({item}:any):JSX.Element => <ReconciliationCard primaryBtn={"Shelf No. S-509s"} secondaryBtn={"Shelf code-5"} aisleNumber={"Aisle Number"} aisleCode={"Aisle Code"} scode={"S-012"} scodetwo={"s-014"} theme="#c7e5df"/>}
             keyExtractor={item => item.id}
             />
         </View>}
-
-            {/* {!toggleBtn && 
-            <ReconciliationCard theme="#c7e5df"/>} */}
         <Button
             title='Go to Home'
-            onPress={() => navigation.goBack()}
+            // onPress={() => navigation.goBack()}
         />
     </SafeAreaView>
   )

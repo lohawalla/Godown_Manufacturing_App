@@ -3,7 +3,7 @@ import React from 'react'
 
 const Input = ({ value, onChangeText, placeholder, secureText }: any) => {
     return (
-        <View style={{ width: 240, alignSelf: 'center', borderRadius: 3, borderColor: '#F1F0F0',borderWidth:1 }}>
+        <View style={{ width: 240, alignSelf: 'center', borderRadius: 3, borderColor: 'red',borderWidth:1 }}>
             <TextInput
                 placeholder={placeholder}
                 value={value}

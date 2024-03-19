@@ -45,7 +45,7 @@ const InputWithSuggestion = () => {
     setInputValue(text);
     const matched = numbers.filter(number => number.includes(text));
     setMatchedNumbers(matched);
-    setShowSuggestions(text.length > 0);
+    setShowSuggestions(text.length > 0);     
   };
 
   const renderItem = ({item}: {item: string}) => (
@@ -61,6 +61,7 @@ const InputWithSuggestion = () => {
 
   return (
     <>
+    <View style={styles.mainContainer}>
       <View
         style={[
           styles.container,
@@ -100,6 +101,7 @@ const InputWithSuggestion = () => {
           />
         </View>
       )}
+    </View>
     </>
   );
 };
@@ -107,6 +109,9 @@ const InputWithSuggestion = () => {
 export default InputWithSuggestion;
 
 const styles = StyleSheet.create({
+  mainContainer:{
+    alignItems:'center'
+  },
   container: {
     marginTop: 8,
     paddingHorizontal: 12,
@@ -117,7 +122,7 @@ const styles = StyleSheet.create({
     borderWidth: 0.5,
     borderColor: 'rgba(148, 163, 184, 1)',
     borderRadius: 100,
-    backgroundColor: 'white',
+    width:'94%'
   },
   coloredBackground: {
     backgroundColor: 'rgba(30, 41, 59, 1)',
@@ -144,6 +149,7 @@ const styles = StyleSheet.create({
     shadowOffset: {width: 0, height: 8},
     shadowOpacity: 0.8,
     shadowRadius: 16,
+    width:'94%'
   },
   itemContainer: {
     marginVertical: 8,

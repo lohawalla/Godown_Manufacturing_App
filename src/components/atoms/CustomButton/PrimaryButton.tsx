@@ -10,22 +10,27 @@ interface CustomButtonProps {
 
 const PrimaryButton: React.FC<CustomButtonProps> = ({text, width, onPress}) => {
   return (
+    <View style={styles.mainContainer}>
     <TouchableOpacity onPress={onPress}>
-      <View style={[styles.textContainer, {width}]}>
+      <View style={styles.textContainer}>
         <Text style={styles.text}>{text}</Text>
         <Icon
           name="long-arrow-right"
           size={16}
           color="rgba(255, 255, 255, 1)"
-        />
+          />
       </View>
     </TouchableOpacity>
+  </View>
   );
 };
 
 export default PrimaryButton;
 
 const styles = StyleSheet.create({
+  mainContainer:{
+    marginLeft:'4%'
+  },
   textContainer: {
     flexDirection: 'row',
     justifyContent: 'center',
@@ -34,6 +39,7 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     paddingHorizontal: 16,
     borderRadius: 8,
+    width:'96%'
   },
   text: {
     fontFamily: 'Lato',
