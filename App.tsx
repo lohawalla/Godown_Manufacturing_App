@@ -5,6 +5,7 @@ import ApplicationNavigator from './src/navigators/Application';
 import AuthGuard from './src/components/auth/AuthGuard';
 import {useEffect} from 'react';
 import {useCameraPermission} from 'react-native-vision-camera';
+import {CodeScannerPage} from './src/components/molecules/Scanner/CodeScannerPage';
 
 export default function App() {
   const {hasPermission, requestPermission} = useCameraPermission();

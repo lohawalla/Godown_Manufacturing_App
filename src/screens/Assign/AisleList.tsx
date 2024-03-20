@@ -19,12 +19,9 @@ const AisleList = ({navigation, route}: {navigation: any; route: any}) => {
   const [matchedData, setMatchedData] = useState<Aisle[]>([]);
   const {godown, shelf} = route.params;
 
-  console.log('DATA IN AISLE:', godown, shelf);
-
   const {data, error, isError, isLoading} = useFetchAllAisles({
     shelfId: shelf.shelfId,
   });
-  // console.log('DATA IN AISLE LIST:', data);
 
   useEffect(() => {
     if (data) {

@@ -40,7 +40,6 @@ import GodownList from '../screens/Assign/GodownList';
 import AisleList from '../screens/Assign/AisleList';
 import ShelfList from '../screens/Assign/ShelfList';
 import Popup from '../screens/Assign/Popup';
-import MultiListContainer from '../screens/Assign/Lists';
 import QRAssign from '../screens/Assign/QRAssign';
 
 const Stack = createStackNavigator<any>();
