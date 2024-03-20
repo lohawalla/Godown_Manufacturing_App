@@ -1,9 +1,9 @@
 import { apiCall } from ".."
 import { salesBill, salesList } from "../ApiRoutes"
+import { AllSalesApiResponse } from "./types"
 
-export const fetchSalesData = async () => {
-    const data = await apiCall("get",`${salesList}`)
-    console.log('-------->>>>>>>>>>',salesList)
+export const fetchSalesData = async (): Promise<any> => {
+    const data = await apiCall<AllSalesApiResponse>("get",`${salesList}`)
     return data
 }
 

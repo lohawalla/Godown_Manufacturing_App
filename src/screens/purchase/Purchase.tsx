@@ -10,6 +10,7 @@ import PartyListCard from '../../components/molecules/PartyListCard/PartyListCar
 import PrimaryButton from '../../components/atoms/CustomButton/PrimaryButton'
 import InputWithSuggestion from '../../components/molecules/InputWithSuggestion/InputWithSuggestion'
 import { fetchSalesData } from '../../services/purchase/api'
+import { useSalesList } from '../../services/purchase/hooks'
 
 const Purchase = ({navigation}:any):JSX.Element => {
   const [toggleBtn, setToggleBtn]=useState(true)
@@ -17,10 +18,9 @@ const Purchase = ({navigation}:any):JSX.Element => {
         setToggleBtn(val)
     }
 
-  const { isPending, error, data }:any = useQuery({
-    queryKey: ['salesBillList'],
-      queryFn: fetchSalesData
-    })
+
+  const {data, isError, error, isLoading} = useSalesList();
+  console.log('GODOWN-DATA:', data);
   function next(){
     navigation.navigate("BillInfo")
   }
