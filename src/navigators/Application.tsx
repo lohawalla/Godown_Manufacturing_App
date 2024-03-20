@@ -41,6 +41,8 @@ import AisleList from '../screens/Assign/AisleList';
 import ShelfList from '../screens/Assign/ShelfList';
 import Popup from '../screens/Assign/Popup';
 import QRAssign from '../screens/Assign/QRAssign';
+import Purchase from '../screens/purchase/Purchase';
+import BillInfo from '../screens/purchase/BillInfo';
 
 const Stack = createStackNavigator<any>();
 const Tab = createBottomTabNavigator();
@@ -75,7 +77,7 @@ const Home: React.FC = () => {
       />
       <Tab.Screen
         name="Assign"
-        component={GodownList}
+        component={Assign}
         options={{
           headerShown: false,
           tabBarLabel: 'Assign',
@@ -141,11 +143,20 @@ const ApplicationNavigator = () => {
               title: 'Reconciliation Page',
             }}
           />
-          <Stack.Screen name="GodownList" component={GodownList} />
-          <Stack.Screen name="ShelfList" component={ShelfList} />
-          <Stack.Screen name="AisleList" component={AisleList} />
-          <Stack.Screen name="Popup" component={Popup} />
-          <Stack.Screen name="QRAssign" component={QRAssign} />
+          <Stack.Screen
+            name="purchase"
+            component={Purchase}
+            options={{
+              title: 'purchage Page',
+            }}
+          />
+          <Stack.Screen
+            name="BillInfo"
+            component={BillInfo}
+            options={{
+              title: 'Bill Info',
+            }}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </GestureHandlerRootView>

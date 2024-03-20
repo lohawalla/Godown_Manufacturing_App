@@ -8,19 +8,14 @@ import {useCameraPermission} from 'react-native-vision-camera';
 import {CodeScannerPage} from './src/components/molecules/Scanner/CodeScannerPage';
 
 export default function App() {
-  const {hasPermission, requestPermission} = useCameraPermission();
-  console.log(hasPermission);
-  useEffect(() => {
-    requestPermission();
-  }, []);
   const queryClient = new QueryClient();
 
   return (
     <QueryClientProvider client={queryClient}>
       <GluestackUIProvider config={config}>
-        <AuthGuard>
-          <ApplicationNavigator />
-        </AuthGuard>
+        {/* <AuthGuard> */}
+        <ApplicationNavigator />
+        {/* </AuthGuard> */}
       </GluestackUIProvider>
     </QueryClientProvider>
   );

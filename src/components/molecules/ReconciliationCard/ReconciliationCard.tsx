@@ -5,7 +5,7 @@ import CardPrimaryBtn from '../../atoms/Reconciliation/CardPrimaryBtn'
 import CardSecondaryBtn from '../../atoms/Reconciliation/CardSecondaryBtn'
 
 // Reconciliation card
-const ReconciliationCard = (props:{theme:string}) => {
+const ReconciliationCard = (props:{theme:string, aisleNumber:string, aisleCode:string, scode:string, scodetwo:string, primaryBtn:string, secondaryBtn:string}) => {
     let {theme}=props
   return (
     <View style={styles.mainContainer}>
@@ -36,16 +36,16 @@ const ReconciliationCard = (props:{theme:string}) => {
                 }}
             >
                     <View style={styles.container}>
-                        <CardPrimaryBtn width="90%"/>
-                        <CardSecondaryBtn width="90%"/>
+                        <CardPrimaryBtn primaryBtn={props.primaryBtn} width="90%"/>
+                        <CardSecondaryBtn secondaryBtn={props.secondaryBtn} width="90%"/>
                     </View>
                     <View style={[styles.container, styles.middleTitle]}>
-                        <Text style={styles.AisleTitle}>Aisle Number</Text>
-                        <Text style={styles.AisleTitle}>Aisle Code</Text>
+                        <Text style={styles.AisleTitle}>{props.aisleNumber}</Text>
+                        <Text style={styles.AisleTitle}>{props.aisleCode}</Text>
                     </View>
                     <View style={[styles.container, styles.endTitle]}>
-                        <Text>S-234</Text>
-                        <Text>S-234</Text>
+                        <Text>{props.scode}</Text>
+                        <Text>{props.scodetwo}</Text>
                     </View>
             </LinearGradient>
         </View>

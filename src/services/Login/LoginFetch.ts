@@ -1,5 +1,5 @@
 import {apiCall} from '..';
-import {loginRoutes} from '../apiRoutes';
+import { loginRoutes } from '../ApiRoutes';
 
 export const login = async (values: any) => {
   const data = await apiCall('post', `${loginRoutes}`, values);

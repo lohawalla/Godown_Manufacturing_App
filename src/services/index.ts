@@ -1,7 +1,7 @@
 import axios, { AxiosError } from "axios";
 import { Alert } from "react-native";
 
-export const apiCall = async <R, D = {}>(method: 'get' | 'post' | 'patch' | 'delete', url: string, data?: D): Promise<R> => {
+export const apiCall = async <R, D = {}>(method: 'get' | 'post' | 'patch' | 'delete', url: string, data?: D): Promise<R>  => {
     try {
         const response = await axios({
             method,
