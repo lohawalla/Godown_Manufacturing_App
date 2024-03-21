@@ -4,9 +4,10 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 
 interface SecondaryButtonProps {
   text: string;
-  icon: {name: string; size: number; color: string};
-  backgroundColor: string;
-  color: string;
+  icon: {name: string; size: number; color: string} | any;
+  backgroundColor: string | undefined;
+  color: string | undefined;
+  width:number;
   onPress: () => void;
 }
 
@@ -15,11 +16,12 @@ const SecondaryButton: React.FC<SecondaryButtonProps> = ({
   backgroundColor,
   color,
   icon,
+  width,
   onPress,
 }) => {
   return (
     <TouchableOpacity onPress={onPress}>
-      <View style={[styles.textContainer, {backgroundColor}]}>
+      <View style={[styles.textContainer, {backgroundColor}, {width}]}>
         <Icon {...icon} />
         <Text style={[styles.text, {color}]}>{text}</Text>
       </View>

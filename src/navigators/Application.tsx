@@ -40,11 +40,13 @@ import AisleList from '../screens/Assign/AisleList';
 import ShelfList from '../screens/Assign/ShelfList';
 import Popup from '../screens/Assign/Popup';
 import QRAssign from '../screens/Assign/QRAssign';
-import Purchase from '../screens/purchase/Purchase';
+import Purchase from '../screens/purchase/PurchaseList';
 import BillInfo from '../screens/purchase/BillInfo';
 import AssignConfirm from '../screens/Assign/AssignConfirm';
 import Transfer from '../screens/Transfer/Transfer';
 import ConfirmDialogue from '../screens/Assign/ConfirmDialogue';
+import PurchaseGodown from '../screens/purchase/PurchaseGodown';
+import PurchaseCamera from '../screens/purchase/PurchaseCamera';
 
 const Stack = createStackNavigator<any>();
 const Tab = createBottomTabNavigator();
@@ -146,7 +148,7 @@ const ApplicationNavigator = () => {
             }}
           />
           <Stack.Screen
-            name="purchase"
+            name="Purchase"
             component={Purchase}
             options={{
               title: 'purchage Page',
@@ -157,6 +159,20 @@ const ApplicationNavigator = () => {
             component={BillInfo}
             options={{
               title: 'Bill Info',
+            }}
+          />
+          <Stack.Screen
+            name="purchaseGodown"
+            component={PurchaseGodown}
+            options={{
+              title: 'purchaseGodownInfo',
+            }}
+          />
+          <Stack.Screen
+            name="purchaseGodownCamera"
+            component={PurchaseCamera}
+            options={{
+              title: 'purchaseGodownCamera',
             }}
           />
           <Stack.Screen name="ShelfList" component={ShelfList} />

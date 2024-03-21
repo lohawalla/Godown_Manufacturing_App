@@ -20,35 +20,33 @@ import {
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import IonIcon from 'react-native-vector-icons/Ionicons';
 
-const showCodeAlert = (
-  value: string,
-  onDismissed: () => void,
-  onScanComplete: () => void,
-): void => {
-  const buttons: AlertButton[] = [
-    {
-      text: 'Close',
-      style: 'cancel',
-      onPress: onDismissed,
-    },
-  ];
-  if (value.startsWith('http')) {
-    buttons.push({
-      text: 'Open URL',
-      onPress: () => {
-        Linking.openURL(value);
-        onDismissed();
-      },
-    });
-  }
-};
+// const showCodeAlert = (value: string, onDismissed: () => void): void => {
+//     const buttons: AlertButton[] = [
+//         {
+//             text: 'Close',
+//             style: 'cancel',
+//             onPress: onDismissed,
+//         },
+//     ]
+//     if (value.startsWith('http')) {
+//         buttons.push({
+//             text: 'Open URL',
+//             onPress: () => {
+//                 Linking.openURL(value)
+//                 onDismissed()
+//             },
+//         })
+//     }
+//     Alert.alert('Scanned Code', value, buttons)
+// }
 
 type Props = NativeStackScreenProps<Routes, 'CodeScannerPage'>;
 export function CodeScannerPage({
   setShow,
   setScannedValue,
   navigation,
-  onScanComplete,
+  type,
+  extraData,
 }: any): React.ReactElement {
   const device = useCameraDevice('back');
   const isFocused = useIsFocused();
@@ -56,7 +54,29 @@ export function CodeScannerPage({
   const isActive = isFocused && isForeground;
   const [torch, setTorch] = useState(false);
   const isShowingAlert = useRef(false);
-
+  const showCodeAlert = (value: string, onDismissed: () => void): void => {
+    // const buttons: AlertButton[] = [
+    //     {
+    //         text: 'Close',
+    //         style: 'cancel',
+    //         onPress: onDismissed,
+    //     },
+    // ]
+    // if (value.startsWith('http')) {
+    //     buttons.push({
+    //         text: 'Open URL',
+    //         onPress: () => {
+    //             Linking.openURL(value)
+    //             onDismissed()
+    //         },
+    //     })
+    // }
+    // Alert.alert('Scanned Code', value, buttons)
+    if (type == 'Purchase') {
+      navigation.navigate('purchaseGodown', {id: value});
+      onDismissed();
+    }
+  };
   const onCodeScanned = useCallback((codes: Code[]) => {
     console.log(`Scanned ${codes.length} codes:`, codes);
     setScannedValue(codes[0].value);
@@ -64,13 +84,9 @@ export function CodeScannerPage({
     const value = codes[0]?.value;
     if (value == null) return;
     if (isShowingAlert.current) return;
-    showCodeAlert(
-      value,
-      () => {
-        isShowingAlert.current = false;
-      },
-      onScanComplete,
-    );
+    showCodeAlert(value, () => {
+      isShowingAlert.current = false;
+    });
     isShowingAlert.current = true;
   }, []);
   const codeScanner = useCodeScanner({
@@ -80,16 +96,14 @@ export function CodeScannerPage({
   return (
     <View style={styles.container}>
       {device != null && (
-        <View style={styles.cameraContainer}>
-          <Camera
-            style={[StyleSheet.absoluteFill, styles.camera]}
-            device={device}
-            isActive={isActive}
-            codeScanner={codeScanner}
-            torch={torch ? 'on' : 'off'}
-            enableZoomGesture={true}
-          />
-        </View>
+        <Camera
+          style={StyleSheet.absoluteFill}
+          device={device}
+          isActive={isActive}
+          codeScanner={codeScanner}
+          torch={torch ? 'on' : 'off'}
+          enableZoomGesture={true}
+        />
       )}
       <StatusBarBlurBackground />
       <View style={styles.rightButtonRow}>
@@ -115,7 +129,7 @@ export function CodeScannerPage({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'black',
+    backgroundColor: 'red',
   },
   cameraContainer: {
     flex: 1,
