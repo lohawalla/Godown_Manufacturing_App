@@ -33,13 +33,10 @@ const PhotoSave = ({setShow,setScannedValue,navigation,navigateToNextScreen, // 
   const capturePhoto=async()=>{
     console.log('PhotoSave')
         try {
-        const photo = await camera.current.takePhoto({
-          quality: 'high',
-          base64: true,
-        });
-        console.log(photo)
-        // Save the photo to the gallery
-        await CameraRoll.saveToCameraRoll(photo.base64, 'photo');
+          const file = await camera.current.takePhoto()
+          await CameraRoll.saveAsset(`file://${file.path}`, {
+            type: 'photo',
+          })
 
         Alert.alert('Success', 'Photo saved to gallery!');
       } catch (error) {
