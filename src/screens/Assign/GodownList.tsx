@@ -9,6 +9,7 @@ import {useFetchAllGodowns} from '../../services/godown/hooks';
 interface Godown {
   id: string;
   name: string;
+  code: string;
 }
 
 const GodownList = ({navigation}: {navigation: any}) => {
@@ -51,6 +52,7 @@ const GodownList = ({navigation}: {navigation: any}) => {
       godown: {
         godownId: godown.id,
         godownName: godown.name,
+        godownCode: godown.code,
       },
     });
   };
@@ -69,7 +71,7 @@ const GodownList = ({navigation}: {navigation: any}) => {
     return (
       <View style={styles.list}>
         <TouchableOpacity onPress={() => handleGodownPress(item)}>
-          <Text>{item.name}</Text>
+          <Text style={styles.text}>{item.name}</Text>
         </TouchableOpacity>
       </View>
     );
@@ -137,5 +139,8 @@ const styles = StyleSheet.create({
     borderRadius: 6,
     padding: 12,
     marginVertical: 8,
+  },
+  text: {
+    color: 'black',
   },
 });

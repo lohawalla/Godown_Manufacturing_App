@@ -4,13 +4,12 @@ import SelectedCard from '../../components/atoms/SelectedCard/SelectedCard';
 import Card from '../../components/atoms/Card/Card';
 import {StackScreenProps} from '@react-navigation/stack';
 import PrimaryButton from '../../components/atoms/CustomButton/PrimaryButton';
-import {G} from 'react-native-svg';
 
 type RootStackParamList = {
   Popup: {
-    godown: {godownId: string; godownName: string};
-    aisle: {aisleId: string; aisleName: string};
-    shelf: {shelfId: string; shelfName: string};
+    godown: {godownId: string; godownName: string; godownCode: string};
+    aisle: {aisleId: string; aisleName: string; aisleCode: string};
+    shelf: {shelfId: string; shelfName: string; shelfCode: string};
   };
 };
 
@@ -23,12 +22,7 @@ const Popup: React.FC<PopupScreenProps> = ({route, navigation}) => {
     console.log('button pressed');
   };
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-      }}>
+    <View style={styles.mainContainer}>
       <View style={styles.container}>
         <Card
           name="Godown"
@@ -56,12 +50,24 @@ const Popup: React.FC<PopupScreenProps> = ({route, navigation}) => {
       <View style={styles.button}>
         <PrimaryButton
           text="Scan QR"
-          width={330}
+          width={328}
           onPress={() =>
             navigation.navigate('QRAssign', {
-              godown: {id: godown.godownId, name: godown.godownName},
-              aisle: {id: aisle.aisleId, name: aisle.aisleName},
-              shelf: {id: shelf.shelfId, name: shelf.shelfName},
+              godown: {
+                id: godown.godownId,
+                name: godown.godownName,
+                code: godown.godownCode,
+              },
+              aisle: {
+                id: aisle.aisleId,
+                name: aisle.aisleName,
+                code: aisle.aisleCode,
+              },
+              shelf: {
+                id: shelf.shelfId,
+                name: shelf.shelfName,
+                code: shelf.shelfCode,
+              },
             })
           }
         />
@@ -73,8 +79,14 @@ const Popup: React.FC<PopupScreenProps> = ({route, navigation}) => {
 export default Popup;
 
 const styles = StyleSheet.create({
+  mainContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   button: {
     marginTop: 15,
+    marginLeft: -10,
   },
   container: {
     marginVertical: 15,

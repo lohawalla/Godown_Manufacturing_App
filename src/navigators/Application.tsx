@@ -32,7 +32,6 @@ import {Image} from '@gluestack-ui/themed';
 import ImageIndex from '../theme/AssestIndex';
 import Feather from 'react-native-vector-icons/Ionicons';
 import Assign from '../screens/Assign/Assign';
-import Transfer from '../screens/Transfer/Transfer';
 import History from '../screens/History/History';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import Page1 from '../screens/reconciliation/Page1';
@@ -43,6 +42,9 @@ import Popup from '../screens/Assign/Popup';
 import QRAssign from '../screens/Assign/QRAssign';
 import Purchase from '../screens/purchase/Purchase';
 import BillInfo from '../screens/purchase/BillInfo';
+import AssignConfirm from '../screens/Assign/AssignConfirm';
+import Transfer from '../screens/Transfer/Transfer';
+import ConfirmDialogue from '../screens/Assign/ConfirmDialogue';
 
 const Stack = createStackNavigator<any>();
 const Tab = createBottomTabNavigator();
@@ -77,7 +79,7 @@ const Home: React.FC = () => {
       />
       <Tab.Screen
         name="Assign"
-        component={Assign}
+        component={GodownList}
         options={{
           headerShown: false,
           tabBarLabel: 'Assign',
@@ -157,6 +159,12 @@ const ApplicationNavigator = () => {
               title: 'Bill Info',
             }}
           />
+          <Stack.Screen name="ShelfList" component={ShelfList} />
+          <Stack.Screen name="AisleList" component={AisleList} />
+          <Stack.Screen name="Popup" component={Popup} />
+          <Stack.Screen name="QRAssign" component={QRAssign} />
+          <Stack.Screen name="AssignConfirm" component={AssignConfirm} />
+          <Stack.Screen name="ConfirmDialogue" component={ConfirmDialogue} />
         </Stack.Navigator>
       </NavigationContainer>
     </GestureHandlerRootView>

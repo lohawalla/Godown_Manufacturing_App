@@ -6,6 +6,7 @@ import AuthGuard from './src/components/auth/AuthGuard';
 import {useEffect} from 'react';
 import {useCameraPermission} from 'react-native-vision-camera';
 import {CodeScannerPage} from './src/components/molecules/Scanner/CodeScannerPage';
+import AssignConfirmCard from './src/components/molecules/AssignConfirmCard/AssignConfirmCard';
 
 export default function App() {
   const queryClient = new QueryClient();
@@ -13,9 +14,9 @@ export default function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <GluestackUIProvider config={config}>
-        {/* <AuthGuard> */}
-        <ApplicationNavigator />
-        {/* </AuthGuard> */}
+        <AuthGuard>
+          <ApplicationNavigator />
+        </AuthGuard>
       </GluestackUIProvider>
     </QueryClientProvider>
   );

@@ -1,18 +1,19 @@
-import React, {useState} from 'react';
-import {View, StyleSheet} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {View, StyleSheet, Alert} from 'react-native';
 import {CodeScannerPage} from '../../components/molecules/Scanner/CodeScannerPage';
 
-const QRAssign = ({navigation}: {navigation: any}) => {
-  const [showScanner, setShowScanner] = useState(true); // State to control the visibility of the scanner
+const QRAssign = ({navigation, route}: {navigation: any; route: any}) => {
+  const [showScanner, setShowScanner] = useState(true);
   const [scannedValue, setScannedValue] = useState(null); // State to store the scanned value
 
+  const {godown, aisle, shelf} = route.params;
+  console.log('DATA IN QRAssign:', godown, aisle, shelf);
+
   const handleScannedValue = (value: any) => {
-    // Handle the scanned value here as needed
     console.log('Scanned value:', value);
     // Scanned value: p4kf1041e6c0121
-    // For example, you can update your database or perform any other action
     setScannedValue(value);
-    setShowScanner(false); // Hide the scanner after scanning
+    setShowScanner(false);
   };
 
   return (
@@ -22,6 +23,14 @@ const QRAssign = ({navigation}: {navigation: any}) => {
           setShow={setShowScanner}
           setScannedValue={handleScannedValue}
           navigation={navigation}
+          onScanComplete={() =>
+            navigation.navigate('AssignConfirm', {
+              godown,
+              aisle,
+              shelf,
+              QRValue: scannedValue,
+            })
+          }
         />
       )}
     </View>

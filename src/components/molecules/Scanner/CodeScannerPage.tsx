@@ -20,7 +20,11 @@ import {
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import IonIcon from 'react-native-vector-icons/Ionicons';
 
-const showCodeAlert = (value: string, onDismissed: () => void): void => {
+const showCodeAlert = (
+  value: string,
+  onDismissed: () => void,
+  onScanComplete: () => void,
+): void => {
   const buttons: AlertButton[] = [
     {
       text: 'Close',
@@ -37,7 +41,6 @@ const showCodeAlert = (value: string, onDismissed: () => void): void => {
       },
     });
   }
-  Alert.alert('Scanned Code', value, buttons);
 };
 
 type Props = NativeStackScreenProps<Routes, 'CodeScannerPage'>;
@@ -45,6 +48,7 @@ export function CodeScannerPage({
   setShow,
   setScannedValue,
   navigation,
+  onScanComplete,
 }: any): React.ReactElement {
   const device = useCameraDevice('back');
   const isFocused = useIsFocused();
@@ -52,6 +56,7 @@ export function CodeScannerPage({
   const isActive = isFocused && isForeground;
   const [torch, setTorch] = useState(false);
   const isShowingAlert = useRef(false);
+
   const onCodeScanned = useCallback((codes: Code[]) => {
     console.log(`Scanned ${codes.length} codes:`, codes);
     setScannedValue(codes[0].value);
@@ -59,9 +64,13 @@ export function CodeScannerPage({
     const value = codes[0]?.value;
     if (value == null) return;
     if (isShowingAlert.current) return;
-    showCodeAlert(value, () => {
-      isShowingAlert.current = false;
-    });
+    showCodeAlert(
+      value,
+      () => {
+        isShowingAlert.current = false;
+      },
+      onScanComplete,
+    );
     isShowingAlert.current = true;
   }, []);
   const codeScanner = useCodeScanner({
