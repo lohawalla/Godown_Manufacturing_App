@@ -43,8 +43,9 @@ import Popup from '../screens/Assign/Popup';
 import QRAssign from '../screens/Assign/QRAssign';
 import Purchase from '../screens/purchase/PurchaseList';
 import BillInfo from '../screens/purchase/BillInfo';
-import PurchaseCamera from '../screens/purchase/PurchaseCamera';
 import PurchaseGodown from '../screens/purchase/PurchaseGodown';
+import PurchaseCamera from '../screens/purchase/PurchaseCamera';
+import PurchaseAislePhoto from '../screens/purchase/PurchaseAislePhoto';
 
 const Stack = createStackNavigator<any>();
 const Tab = createBottomTabNavigator();
@@ -168,6 +169,12 @@ const ApplicationNavigator = () => {
                         component={PurchaseCamera}
                         options={{
                         title: "purchaseGodownCamera"
+                    }}/>
+                    <Stack.Screen
+                        name='PurchaseAislePhoto'
+                        component={PurchaseAislePhoto}
+                        options={{
+                        title: "PurchaseAislePhoto"
                     }}/>
                 </Stack.Navigator>
             </NavigationContainer>
