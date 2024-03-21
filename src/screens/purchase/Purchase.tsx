@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View,Button } from 'react-native'
+import { StyleSheet, Text, View,Button, Image, TouchableOpacity} from 'react-native'
 import React, { useState } from 'react'
 import Navbar from '../Navbar/Navbar'
 import ToggleButton from '../../components/molecules/ToggleHeader/ToggleButton'
@@ -20,10 +20,22 @@ const Purchase = ({navigation}:any):JSX.Element => {
 
 
   const {data, isError, error, isLoading} = useSalesList();
-  console.log('GODOWN-DATA:', data);
-  function next(){
-    navigation.navigate("BillInfo")
+
+  const next=(val:number)=>{
+    navigation.navigate("BillInfo", {id:val})
+    console.log(val)
   }
+  
+  const opencamera=()=>{
+    navigation.navigate("purchaseGodownCamera")
+  }
+  if (isLoading)
+    return (
+      <View style={{flex:1, alignItems:'center', justifyContent:'center'}}>
+        <Text>Loading...</Text>
+      </View>
+    );
+
 
   return (
     <SafeAreaView>
@@ -31,22 +43,35 @@ const Purchase = ({navigation}:any):JSX.Element => {
       <ToggleButton titleOne={'Sales'} titleTwo={"Purchase"} toggleView={toggleView} toggleBtn={toggleBtn}/>
         <Text style={styles.heading}>Party List</Text>
         <InputWithSuggestion/>
-      {toggleBtn && <View style={{padding:12, height:'65%'}}>
+      {toggleBtn && <View style={{padding:12, height:'70%'}}>
             <FlatList
             data={data?.data}
-            renderItem={({item}:any):JSX.Element => <PartyListCard onPress={next} primaryImage='https://shorturl.at/dlpDG' qrImage='https://rb.gy/m8zvbd' DateTime={item.createdAt.substring(0, 10)} Name={item.partyId.partyName.substring(0, 13)+'...'} status='pending' billNumber={item?.billNumber} salesNumber={item?.salesNumber} purchaseNumber={item?.purchaseNumber}/>}
+            renderItem={({item}:any):JSX.Element => <PartyListCard onPress={()=>next(item._id)} primaryImage='https://shorturl.at/dlpDG' qrImage='https://rb.gy/m8zvbd' DateTime={item.createdAt.substring(0, 10)} Name={item.partyId.partyName.substring(0, 13)+'...'} status='pending' billNumber={item?.billNumber} salesNumber={item?.salesNumber} purchaseNumber={item?.purchaseNumber}/>}
             keyExtractor={item => item._id}
             />
         </View>}
+
         {/* {!toggleBtn && <View style={{padding:12, height:'65%'}}>
             <FlatList
             data={data?.data.products}
             renderItem={({item}:any):JSX.Element => <PartyListCard primaryImage='https://shorturl.at/dlpDG' qrImage='https://rb.gy/m8zvbd' DateTime='07/10/23, 02:00pm' Name='danish' status='pending' />}
             keyExtractor={item => item.id}
             />
-        </View>} */}
-          <PrimaryButton width={300} text='Next' onPress={next}/>
+          </View>} */}
 
+          <View style={{marginTop:-100, alignItems:'flex-end'}}>
+            <TouchableOpacity onPress={()=>opencamera()}>
+              <Image
+                source={require('../../assets/scannerImage.png')}
+              />
+            </TouchableOpacity>
+          </View>
+
+
+          {/* Primary Button */}
+        {/* <View style={{marginTop:-40}}>
+          {false && <PrimaryButton width={300} text='Next' onPress={()=>console.log(null)}/>}
+        </View> */}
     </SafeAreaView>
   )
 }

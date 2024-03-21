@@ -6,17 +6,40 @@ import PartyListCard from '../../components/molecules/PartyListCard/PartyListCar
 import MaterialInfo from '../../components/molecules/RawMaterialCard/MaterialInfo'
 import { useQuery } from '@tanstack/react-query'
 import { fetchSalesBill } from '../../services/purchase/api'
+import { useRoute } from '@react-navigation/native'
+import { useSaleBill } from '../../services/purchase/hooks'
+import PrimaryButton from '../../components/atoms/CustomButton/PrimaryButton'
+import PurchaseCamera from './PurchaseCamera'
 
 const BillInfo = ({ navigation }: any) => {
-    const { isPending, error, data }:any = useQuery({
-        queryKey: ['fetchBill'],
-          queryFn: fetchSalesBill
-        })
-        console.log(data)
+
+  const next=(val:number)=>{
+    navigation.navigate("purchaseGodown")
+  }
+  
+  const route = useRoute();
+  const { id }:any = route.params;
+  const {data, isError, error, isLoading}:any = useSaleBill({
+    saleId:id
+  });
+
+  if(isLoading){
+    return (
+      <View>
+        <Navbar/>
+        <View style={{alignItems:'center'}}>
+          <Text>Loading...</Text>
+        </View>
+      </View>
+    )
+  }
+
   return (
     <View>
       <Navbar/>
-      <RawMaterialCard />
+      {/* <PurchaseCamera/> */}
+      <RawMaterialCard data={data?.data}/>
+      <PrimaryButton width={360} text='Unload' onPress={()=>next(id)}/>
     </View>
   )
 }

@@ -1,6 +1,7 @@
 export interface AllSalesApiResponse {
     success: boolean;
     message: string;
+    id:number;
     data: {
       salesNumber: string;
       BillNumber: string;

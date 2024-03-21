@@ -27,7 +27,7 @@ const Transfer = () => {
                 {/* <View style={styles.component}> */}
                     <View style={styles.MainTitle}>
                         <Text style={styles.Heading}>Assign this QR Code to</Text>
-                    </View>
+                     </View>
                     <View style={styles.secondComponent}>
                         <Image style={styles.qr_image} source={{ uri: 'https://rb.gy/m8zvbd' }} />
                         <Text style={styles.primaryTitle}>QR Code No. </Text>

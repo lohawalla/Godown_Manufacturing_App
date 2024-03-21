@@ -1,7 +1,7 @@
 import { View, Text } from 'react-native'
 import React from 'react'
 import LinearGradient from 'react-native-linear-gradient'
-const index = () => {
+const GodownNameCards = () => {
     return (
         <LinearGradient colors={['#0078FB29','#0078FB0A']} style={{borderRadius:14,borderWidth:1,borderColor:'white',paddingVertical:10,paddingHorizontal:12,margin:10}}>
             <View style={{marginBottom:10,flexDirection:'column'}}>
@@ -27,4 +27,4 @@ const index = () => {
     )
 }
 
-export default index
+export default GodownNameCards
