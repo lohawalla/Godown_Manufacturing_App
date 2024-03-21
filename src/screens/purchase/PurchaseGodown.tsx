@@ -5,8 +5,12 @@ import ItemCard from '../../components/molecules/ItemCard/ItemCard'
 import GodownNameCards from '../../components/molecules/GodownNameCard/GodownNameCard'
 import PrimaryButton from '../../components/atoms/CustomButton/PrimaryButton'
 import SecondaryButton from '../../components/atoms/CustomButton/SecondaryButton'
+import { useRoute } from '@react-navigation/native'
 
 const PurchaseGodown = () => {
+  // const route = useRoute();
+  // const { id }:any = route.params;
+  // console.log(id)
   return (
     <>
     <Navbar/>

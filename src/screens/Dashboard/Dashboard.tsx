@@ -23,7 +23,7 @@ const Dashboard = ({ navigation }: any) => {
                     <Card name={'Reconciliation'} image={ImageIndex.notepad} height={150}/>
                 </TouchableOpacity>
                 <TouchableOpacity 
-                    onPress={() => navigation.navigate("purchase")}
+                    onPress={() => navigation.navigate("Purchase")}
                     style={{ marginVertical: 60 }}>
                     <Card name={'Purchase'} image={ImageIndex.cart} height={150} />
                 </TouchableOpacity>

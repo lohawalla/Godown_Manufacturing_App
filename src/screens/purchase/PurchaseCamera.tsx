@@ -8,11 +8,13 @@ const PurchaseCamera = ({navigation}:any) => {
   const [show, setShow] = useState(false);
   const [scannedValue, setScannedValue] = useState(null);
   return (
-      <CodeScannerPage
-          setShow={setShow}
-          setScannedValue={setScannedValue}
-          navigation={navigation}
-      />
+        <CodeScannerPage
+            setShow={setShow}
+            setScannedValue={setScannedValue}
+            navigation={navigation}
+            type='Purchase'
+            godown="abc"
+          />
   )
 }
 

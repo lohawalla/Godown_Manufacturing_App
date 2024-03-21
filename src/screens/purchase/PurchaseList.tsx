@@ -12,7 +12,7 @@ import InputWithSuggestion from '../../components/molecules/InputWithSuggestion/
 import { fetchSalesData } from '../../services/purchase/api'
 import { useSalesList } from '../../services/purchase/hooks'
 
-const Purchase = ({navigation}:any):JSX.Element => {
+const PurchaseList = ({navigation}:any):JSX.Element => {
   const [toggleBtn, setToggleBtn]=useState(true)
     const toggleView=(val:boolean):void=>{ 
         setToggleBtn(val)
@@ -76,7 +76,7 @@ const Purchase = ({navigation}:any):JSX.Element => {
   )
 }
 
-export default Purchase
+export default PurchaseList
 
 const styles = StyleSheet.create({
   heading:{

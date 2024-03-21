@@ -9,7 +9,7 @@ import { fetchSalesBill } from '../../services/purchase/api'
 import { useRoute } from '@react-navigation/native'
 import { useSaleBill } from '../../services/purchase/hooks'
 import PrimaryButton from '../../components/atoms/CustomButton/PrimaryButton'
-import PurchaseCamera from './PurchaseCamera'
+import { SafeAreaView } from 'react-native-safe-area-context'
 
 const BillInfo = ({ navigation }: any) => {
 
@@ -35,12 +35,13 @@ const BillInfo = ({ navigation }: any) => {
   }
 
   return (
-    <View>
-      <Navbar/>
-      {/* <PurchaseCamera/> */}
-      <RawMaterialCard data={data?.data}/>
-      <PrimaryButton width={360} text='Unload' onPress={()=>next(id)}/>
-    </View>
+    <SafeAreaView>
+      <View>
+        <Navbar/>
+        <RawMaterialCard data={data?.data}/>
+        <PrimaryButton width={'96%'} text='Unload' onPress={()=>next(id)}/>
+      </View>
+    </SafeAreaView>
   )
 }
 
