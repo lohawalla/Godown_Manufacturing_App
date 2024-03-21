@@ -3,7 +3,9 @@ import {QueryClient, QueryClientProvider} from '@tanstack/react-query';
 import {config} from '@gluestack-ui/config';
 import ApplicationNavigator from './src/navigators/Application';
 import AuthGuard from './src/components/auth/AuthGuard';
-import BillInfo from './src/screens/purchase/BillInfo';
+import {useEffect} from 'react';
+import {useCameraPermission} from 'react-native-vision-camera';
+import {CodeScannerPage} from './src/components/molecules/Scanner/CodeScannerPage';
 
 export default function App() {
   const queryClient = new QueryClient();
@@ -12,7 +14,7 @@ export default function App() {
     <QueryClientProvider client={queryClient}>
       <GluestackUIProvider config={config}>
         {/* <AuthGuard> */}
-          <ApplicationNavigator />
+        <ApplicationNavigator />
         {/* </AuthGuard> */}
       </GluestackUIProvider>
     </QueryClientProvider>
