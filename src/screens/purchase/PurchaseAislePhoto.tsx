@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React, { useState } from 'react'
-import ImageClick from '../../components/molecules/ImageClick/photo'
+import PhotoSave from '../../components/molecules/PhotoSave/PhotoSave';
 
 const PurchaseAislePhoto = ({navigation, route}:any) => {
     const [showScanner, setShowScanner] = useState(false);
@@ -14,7 +14,7 @@ const PurchaseAislePhoto = ({navigation, route}:any) => {
         navigation.navigate('Purchase')
     }
   return (
-      <ImageClick
+      <PhotoSave
         setShow={setShowScanner}
         setScannedValue={handleScannedValue}
         navigation={navigation}
