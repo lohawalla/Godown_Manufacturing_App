@@ -4,7 +4,7 @@ import React from 'react';
 const Transfer = () => {
   return (
     <View>
-      <Text>Transfer</Text>
+      <Text>Transfer...</Text>
     </View>
   );
 };
