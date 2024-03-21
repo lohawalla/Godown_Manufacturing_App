@@ -4,7 +4,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 
 interface CustomButtonProps {
   text: string;
-  width: number | null;
+  width: any;
   onPress: () => void;
 }
 
@@ -12,7 +12,7 @@ const PrimaryButton: React.FC<CustomButtonProps> = ({text, width, onPress}) => {
   return (
     <View style={styles.mainContainer}>
     <TouchableOpacity onPress={onPress}>
-      <View style={[styles.textContainer, , {width}]}>
+      <View style={[styles.textContainer, , {width:width}]}>
         <Text style={styles.text}>{text}</Text>
         <Icon
           name="long-arrow-right"

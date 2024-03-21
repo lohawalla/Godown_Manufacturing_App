@@ -41,7 +41,7 @@ import AisleList from '../screens/Assign/AisleList';
 import ShelfList from '../screens/Assign/ShelfList';
 import Popup from '../screens/Assign/Popup';
 import QRAssign from '../screens/Assign/QRAssign';
-import Purchase from '../screens/purchase/Purchase';
+import Purchase from '../screens/purchase/PurchaseList';
 import BillInfo from '../screens/purchase/BillInfo';
 import PurchaseCamera from '../screens/purchase/PurchaseCamera';
 import PurchaseGodown from '../screens/purchase/PurchaseGodown';
@@ -146,7 +146,7 @@ const ApplicationNavigator = () => {
                         title: "Reconciliation Page"
                     }}/>
                     <Stack.Screen
-                        name='purchase'
+                        name='Purchase'
                         component={Purchase}
                         options={{
                         title: "purchage Page"

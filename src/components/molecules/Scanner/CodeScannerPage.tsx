@@ -20,34 +20,57 @@ import {
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import IonIcon from 'react-native-vector-icons/Ionicons';
 
-const showCodeAlert = (value: string, onDismissed: () => void): void => {
-    const buttons: AlertButton[] = [
-        {
-            text: 'Close',
-            style: 'cancel',
-            onPress: onDismissed,
-        },
-    ]
-    if (value.startsWith('http')) {
-        buttons.push({
-            text: 'Open URL',
-            onPress: () => {
-                Linking.openURL(value)
-                onDismissed()
-            },
-        })
-    }
-    Alert.alert('Scanned Code', value, buttons)
-}
+// const showCodeAlert = (value: string, onDismissed: () => void): void => {
+//     const buttons: AlertButton[] = [
+//         {
+//             text: 'Close',
+//             style: 'cancel',
+//             onPress: onDismissed,
+//         },
+//     ]
+//     if (value.startsWith('http')) {
+//         buttons.push({
+//             text: 'Open URL',
+//             onPress: () => {
+//                 Linking.openURL(value)
+//                 onDismissed()
+//             },
+//         })
+//     }
+//     Alert.alert('Scanned Code', value, buttons)
+// }
 
 type Props = NativeStackScreenProps<Routes, 'CodeScannerPage'>
-export function CodeScannerPage({ setShow, setScannedValue, navigation }: any): React.ReactElement {
+export function CodeScannerPage({ setShow, setScannedValue, navigation, type, extraData }: any): React.ReactElement {
     const device = useCameraDevice('back')
     const isFocused = useIsFocused()
     const isForeground = useIsForeground()
     const isActive = isFocused && isForeground
     const [torch, setTorch] = useState(false)
     const isShowingAlert = useRef(false)
+    const showCodeAlert = (value: string, onDismissed: () => void): void => {
+        // const buttons: AlertButton[] = [
+        //     {
+        //         text: 'Close',
+        //         style: 'cancel',
+        //         onPress: onDismissed,
+        //     },
+        // ]
+        // if (value.startsWith('http')) {
+        //     buttons.push({
+        //         text: 'Open URL',
+        //         onPress: () => {
+        //             Linking.openURL(value)
+        //             onDismissed()
+        //         },
+        //     })
+        // }
+        // Alert.alert('Scanned Code', value, buttons)
+        if(type=='Purchase'){
+            navigation.navigate("purchaseGodown", {id:value})
+            onDismissed()
+        }
+    }
     const onCodeScanned = useCallback((codes: Code[]) => {
         console.log(`Scanned ${codes.length} codes:`, codes)
         setScannedValue(codes[0].value)
@@ -92,7 +115,7 @@ export function CodeScannerPage({ setShow, setScannedValue, navigation }: any): 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'black',
+    backgroundColor: 'red',
   },
   cameraContainer: {
     flex: 1,
