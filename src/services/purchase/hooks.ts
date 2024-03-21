@@ -1,6 +1,9 @@
 import { useQuery } from "@tanstack/react-query"
-import { fetchSalesData } from "./api"
+import { fetchSalesBill, fetchSalesData } from "./api"
 
+interface FetchSalesIdParams {
+    saleId: string;
+  }
 
 export const useSalesList=()=>{
     return useQuery({
@@ -8,3 +11,11 @@ export const useSalesList=()=>{
         queryFn:fetchSalesData
     })
 }
+
+export const useSaleBill=({saleId}:FetchSalesIdParams)=>{
+    return useQuery({
+        queryKey:['saleBill', {saleId}],
+        queryFn:()=>fetchSalesBill(saleId)
+    })
+}
+  

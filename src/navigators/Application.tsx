@@ -19,6 +19,8 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import Page1 from '../screens/reconciliation/Page1';
 import Purchase from '../screens/purchase/Purchase';
 import BillInfo from '../screens/purchase/BillInfo';
+import purchaseGodown from '../screens/purchase/PurchaseGodown';
+import PurchaseCamera from '../screens/purchase/PurchaseCamera';
 
 const Stack = createStackNavigator<any>();
 const Tab = createBottomTabNavigator();
@@ -90,6 +92,18 @@ const ApplicationNavigator = () => {
                         component={BillInfo}
                         options={{
                         title: "Bill Info"
+                    }}/>
+                    <Stack.Screen
+                        name='purchaseGodown'
+                        component={purchaseGodown}
+                        options={{
+                        title: "purchaseGodownInfo"
+                    }}/>
+                    <Stack.Screen
+                        name='purchaseGodownCamera'
+                        component={PurchaseCamera}
+                        options={{
+                        title: "purchaseGodownCamera"
                     }}/>
                 </Stack.Navigator>
             </NavigationContainer>

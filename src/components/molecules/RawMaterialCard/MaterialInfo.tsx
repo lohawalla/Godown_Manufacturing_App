@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import DropDownPicker from 'react-native-dropdown-picker';
 import StatusIndicator from '../../atoms/StatusIndicator'
 
-const MaterialInfo = () => {
+const MaterialInfo = ({data}:any) => {
     const [open, setOpen] = useState(false);
     const [value, setValue] = useState(null);
     const [items, setItems] = useState([
@@ -17,14 +17,14 @@ const MaterialInfo = () => {
             <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                 <View>
                     <Text style={{ color: '#1E293B', fontWeight: '500', fontSize: 12 }}>M.CODE</Text>
-                    <Text style={{ color: '#64748B', fontWeight: '700', fontSize: 14 }}>123456</Text>
+                    <Text style={{ color: '#64748B', fontWeight: '700', fontSize: 14 }}>{data?.Items[0]?.MCode}</Text>
                 </View>
                 <View>
                     <StatusIndicator color={'white'} backgroundColor={'#1E293B'} text={'12:02:2023'} smallText={'DUE DATE'}  width={100}/>
                 </View>
                 <View style={{ alignContent: 'flex-end' }}>
                     <Text style={{ color: '#1E293B', fontSize: 12, fontWeight: '500' }}>Total Amount</Text>
-                    <Text style={{ color: '#64748B', fontSize: 14, fontWeight: '700' }}>₹ 50,000</Text>
+                    <Text style={{ color: '#64748B', fontSize: 14, fontWeight: '700' }}>{data?.totalAmount}</Text>
                 </View>
             </View>
             {/* Bottom */}
@@ -47,7 +47,7 @@ const MaterialInfo = () => {
                 </View>
                 <View style={{ width: 72, height: 68, justifyContent: 'center', alignItems: 'center' }}>
                     <Text style={{ color: '#1E293B', fontSize: 12, fontWeight: '500' }}>Purchase Quantity</Text>
-                    <Text>100 KG</Text>
+                    <Text>{data?.Items[0]?.salesOrders[0]?.quantity}</Text>
                 </View>
                 <View style={{ width: 72, height: 68, justifyContent: 'center' }}>
                     <Text style={{ color: '#1E293B', fontSize: 12, fontWeight: '500',marginTop:10}}>Input Quantity</Text>

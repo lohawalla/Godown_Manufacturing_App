@@ -8,6 +8,6 @@ export const fetchSalesData = async (): Promise<any> => {
 }
 
 export const fetchSalesBill = async (id:any) => {
-    const data = await apiCall("get",`${salesBill+'/65eb00b2580e39250f8bbaac'}`)
+    const data = await apiCall("get",`${salesBill+'/'+id}`)
     return data
 }
