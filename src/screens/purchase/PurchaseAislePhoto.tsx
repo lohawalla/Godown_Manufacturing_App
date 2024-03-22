@@ -10,10 +10,14 @@ const PurchaseAislePhoto = ({navigation}:any) => {
   const { image }:any = route.params;
 
   const confirmPic=async()=>{
-    const photo = await CameraRoll.saveAsset(`file://${image}`, { // save image in gallery using cameraRoll
-          type: 'photo',
-        })
-    Alert.alert('Success', 'Photo saved to gallery!');
+    try {
+        const photo = await CameraRoll.saveAsset(`file://${image}`, { // save image in gallery using cameraRoll
+              type: 'photo',
+            })
+        Alert.alert('Success', 'Photo saved to gallery!');
+    } catch (error) {
+        Alert.alert('Error', 'Failed to save photo to gallery!');
+    }
   }
 
   const goBack=()=>{
