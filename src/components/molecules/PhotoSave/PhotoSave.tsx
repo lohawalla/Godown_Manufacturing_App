@@ -31,7 +31,7 @@ import {CameraRoll} from '@react-native-camera-roll/camera-roll';
 
 const PhotoSave = ({
   setShow,
-  setScannedValue,
+  setCapturedImageData,
   navigation,
   navigateToNextScreen,
 }: any) => {
@@ -43,18 +43,35 @@ const PhotoSave = ({
   const [torch, setTorch] = useState(false);
   const isShowingAlert = useRef(false);
 
+  const blobToBase64 = (blob: Blob): Promise<string> => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onerror = reject;
+      reader.onload = () => {
+        if (typeof reader.result === 'string') {
+          resolve(reader.result);
+        } else {
+          reject(new Error('Unable to read result as string'));
+        }
+      };
+      reader.readAsDataURL(blob);
+    });
+  };
+
   const capturePhoto = async () => {
-    console.log('PhotoSave');
     try {
-      const photo = await camera.current.takePhoto({
-        quality: 'high',
-        base64: true,
-      });
-      console.log(photo);
-      await CameraRoll.saveAsset(`photo://${photo.path}`, {
+      const file = await camera.current.takePhoto();
+      const result = await fetch(`file://${file.path}`);
+      const blobData = await result.blob();
+      const base64Data = await blobToBase64(blobData);
+      await CameraRoll.saveAsset(`file://${file.path}`, {
         type: 'photo',
       });
+
       Alert.alert('Success', 'Photo saved to gallery!');
+      setCapturedImageData(base64Data);
+
+      navigateToNextScreen();
     } catch (error) {
       Alert.alert('Error', 'Failed to save photo to gallery!');
       console.error(error);
@@ -63,6 +80,9 @@ const PhotoSave = ({
 
   return (
     <View style={styles.mainContainer}>
+      <View style={styles.textContainer}>
+        <Text style={styles.text}>Capture Photo</Text>
+      </View>
       <View style={styles.container}>
         {device != null && (
           <Camera
@@ -94,7 +114,7 @@ const PhotoSave = ({
         </TouchableOpacity>
       </View>
       <TouchableOpacity onPress={capturePhoto} style={styles.cameraImage}>
-        <Image source={require('../../../theme/assets/camera-fill.png')} />
+        <Image source={require('../../../assets/Camera.png')} />
       </TouchableOpacity>
     </View>
   );
@@ -114,6 +134,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 0.5,
     width: '90%',
+    borderWidth: 5,
+    borderColor: 'white',
+    borderRadius: 10,
   },
   button: {
     marginBottom: CONTENT_SPACING,
@@ -133,6 +156,14 @@ const styles = StyleSheet.create({
     position: 'absolute',
     left: SAFE_AREA_PADDING.paddingLeft,
     top: SAFE_AREA_PADDING.paddingTop,
+  },
+  text: {
+    color: 'white',
+    fontWeight: 'bold',
+    fontSize: 30,
+  },
+  textContainer: {
+    marginVertical: 10,
   },
 });
 

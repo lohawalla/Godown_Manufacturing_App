@@ -38,8 +38,8 @@ const AssignConfirmCard: React.FC<AssignConfirmProps> = ({
         </View>
         <View style={styles.secondComponent}>
           <Image style={styles.qr_image} source={image} />
-          {/* <Text style={styles.primaryTitle}>QR Code No. </Text>
-            <Text style={styles.secondaryTitle}>{QRValue}</Text> */}
+          <Text style={styles.primaryTitle}>QR Code No. </Text>
+          <Text style={styles.secondaryTitle}>78996</Text>
         </View>
         <View style={styles.thirdComponent}>
           <Image style={styles.secondaryImage} source={aisleImage} />
@@ -93,8 +93,8 @@ const styles = StyleSheet.create({
     height: '40%',
   },
   qr_image: {
-    width: 100,
-    height: 100,
+    width: 70,
+    height: 70,
     marginRight: 10,
   },
   primaryTitle: {
@@ -103,10 +103,10 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   secondaryImage: {
-    width: 100,
-    height: 100,
+    width: 70,
+    height: 70,
     borderRadius: 60,
-    marginRight: 10,
+    marginRight: 40,
   },
   secondaryTitle: {
     fontSize: 16,

@@ -20,8 +20,12 @@ export const apiCall = async <R, D = {}>(
       return response.data;
     }
   } catch (err) {
+    console.log('ERROR..:', err.code, err.message);
     if (err instanceof AxiosError && err.response) {
-      if (err.response.data.success === false) {
+      if (
+        err.response.data.success === true ||
+        err.response.data.success === false
+      ) {
         Alert.alert(err.response.data.message);
         return err.response.data;
       } else {

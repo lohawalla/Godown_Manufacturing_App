@@ -45,10 +45,11 @@ import BillInfo from '../screens/purchase/BillInfo';
 import AssignConfirm from '../screens/Assign/AssignConfirm';
 import Transfer from '../screens/Transfer/Transfer';
 import ConfirmDialogue from '../screens/Assign/ConfirmDialogue';
-import PurchaseGodown from '../screens/purchase/PurchaseGodown';
-import PurchaseCamera from '../screens/purchase/PurchaseCamera';
 import CapturePhoto from '../screens/Assign/CapturePhoto';
 import CapturePhotoConfirmation from '../screens/Assign/CapturePhotoConfirmation';
+import PurchaseGodown from '../screens/purchase/PurchaseGodown';
+import PurchaseCamera from '../screens/purchase/PurchaseCamera';
+import PurchaseAislePhoto from '../screens/purchase/PurchaseAislePhoto';
 
 const Stack = createStackNavigator<any>();
 const Tab = createBottomTabNavigator();
@@ -175,6 +176,13 @@ const ApplicationNavigator = () => {
             component={PurchaseCamera}
             options={{
               title: 'purchaseGodownCamera',
+            }}
+          />
+          <Stack.Screen
+            name="PurchaseAislePhoto"
+            component={PurchaseAislePhoto}
+            options={{
+              title: 'PurchaseAislePhoto',
             }}
           />
           <Stack.Screen name="ShelfList" component={ShelfList} />

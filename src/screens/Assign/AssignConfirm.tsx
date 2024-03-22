@@ -36,7 +36,7 @@ const AssignConfirm = ({navigation, route}: {navigation: any; route: any}) => {
       <AssignConfirmCard
         shelfCode={shelf?.code}
         aisleCode={aisle?.code}
-        image={require('../../theme/assets/sales.png')}
+        image={require('../../theme/assets/qr.png')}
         aisleImage={require('../../theme/assets/sales.png')}
       />
       <View style={styles.button}>

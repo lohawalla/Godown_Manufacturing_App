@@ -7,10 +7,13 @@ import PrimaryButton from '../../components/atoms/CustomButton/PrimaryButton'
 import SecondaryButton from '../../components/atoms/CustomButton/SecondaryButton'
 import { useRoute } from '@react-navigation/native'
 
-const PurchaseGodown = () => {
+const PurchaseGodown = ({navigation}:any) => {
   // const route = useRoute();
   // const { id }:any = route.params;
   // console.log(id)
+  const openCamera=()=>{
+    navigation.navigate('PurchaseAislePhoto')
+  }
   return (
     <>
     <Navbar/>
@@ -19,7 +22,7 @@ const PurchaseGodown = () => {
     </View>
     <View style={styles.bottomButton}>
       <SecondaryButton width={220} backgroundColor={''} icon={null} color={''} text='Unload To Another' onPress={()=>console.log(null)}/>
-      <PrimaryButton width={120} text='Unload' onPress={()=>console.log(null)}/>
+      <PrimaryButton width={120} text='Unload' onPress={()=>openCamera()}/>
     </View>
     </>
   )

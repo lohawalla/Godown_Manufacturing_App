@@ -2,25 +2,17 @@ import {StyleSheet, Text, View} from 'react-native';
 import React, {useState} from 'react';
 import PhotoSave from '../../components/molecules/PhotoSave/PhotoSave';
 
-const CapturePhoto = ({navigation, route}: any) => {
+const PurchaseAislePhoto = ({navigation, route}: any) => {
   const [showScanner, setShowScanner] = useState(false);
   const [scannedValue, setScannedValue] = useState(null);
-  const [capturedImageData, setCapturedImageData] = useState(null);
-  const {godown, shelf, aisle, QRScannedValue} = route.params;
   const handleScannedValue = (value: any) => {
+    console.log('Scanned value:', value);
     setScannedValue(value);
     setShowScanner(false);
   };
   const navigateToNextScreen = () => {
-    navigation.navigate('CapturePhotoConfirmation', {
-      godown,
-      shelf,
-      aisle,
-      QRScannedValue,
-      capturedImageData,
-    });
+    navigation.navigate('CapturePhotoConfirmation');
   };
-
   return (
     <PhotoSave
       setShow={setShowScanner}
@@ -28,12 +20,11 @@ const CapturePhoto = ({navigation, route}: any) => {
       navigation={navigation}
       route={route}
       navigateToNextScreen={navigateToNextScreen}
-      setCapturedImageData={setCapturedImageData}
     />
   );
 };
 
-export default CapturePhoto;
+export default PurchaseAislePhoto;
 
 const styles = StyleSheet.create({
   container: {

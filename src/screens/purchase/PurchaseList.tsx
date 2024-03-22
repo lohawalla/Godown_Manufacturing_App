@@ -59,9 +59,10 @@ const PurchaseList = ({navigation}:any):JSX.Element => {
             />
           </View>} */}
 
-          <View style={{marginTop:-100, alignItems:'flex-end'}}>
+          <View style={styles.scanImage}>
             <TouchableOpacity onPress={()=>opencamera()}>
               <Image
+              style={{borderRadius:60}}
                 source={require('../../assets/scannerImage.png')}
               />
             </TouchableOpacity>
@@ -82,5 +83,9 @@ const styles = StyleSheet.create({
   heading:{
     marginLeft:'4%',
     fontWeight:'bold'
+  },
+  scanImage:{
+    marginTop:-100,
+    alignItems:'flex-end',
   }
 })
