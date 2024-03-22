@@ -2,15 +2,33 @@ import {StyleSheet, Text, View} from 'react-native';
 import React, {useState} from 'react';
 import AssignConfirmCard from '../../components/molecules/AssignConfirmCard/AssignConfirmCard';
 import PrimaryButton from '../../components/atoms/CustomButton/PrimaryButton';
+import {useMutation} from '@tanstack/react-query';
+import {assignQrCodeAisle} from '../../services/aisle/apis';
+import {AssignQrCodeAisleValue} from '../../services/aisle/types';
 
 const AssignConfirm = ({navigation, route}: {navigation: any; route: any}) => {
   const {godown, shelf, aisle, QRScannedValue} = route.params;
 
-  console.log('DATA IN ASSIGNCONFIRM:', godown, shelf, aisle, QRScannedValue);
+  const mutation = useMutation({
+    mutationFn: (sendValue: AssignQrCodeAisleValue) =>
+      assignQrCodeAisle(sendValue),
+    onSuccess: data => {
+      if (data.success) {
+        console.log('Data sent successfully', data);
+      }
+    },
+  });
 
   const handleAssign = () => {
-    navigation.navigate('ConfirmDialogue');
-    console.log('QR Assigned');
+    if (QRScannedValue) {
+      navigation.navigate('ConfirmDialogue');
+      mutation.mutateAsync({
+        aisleCode: aisle.code,
+        qrCodeData: QRScannedValue,
+      });
+    } else {
+      console.error('QR Scanned value is missing');
+    }
   };
 
   return (

@@ -19,6 +19,7 @@ export const allAislesApi = async (
 export const assignQrCodeAisle = async (
   sendValue: AssignQrCodeAisleValue,
 ): Promise<AssignQrCodeAisleValueResponse> => {
+  console.log('SEND VALUE:', sendValue);
   const data = await apiCall<AssignQrCodeAisleValueResponse>(
     'post',
     `${assignQrCodeAislePath}`,

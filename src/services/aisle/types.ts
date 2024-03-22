@@ -8,7 +8,7 @@ export interface AllAislesApiResponse {
 }
 
 export interface AssignQrCodeAisleValue {
-  qrCodeValue: string;
+  qrCodeData: string;
   aisleCode: string;
 }
 

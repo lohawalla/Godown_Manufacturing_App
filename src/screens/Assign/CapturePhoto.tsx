@@ -1,21 +1,19 @@
+import {StyleSheet, Text, View} from 'react-native';
 import React, {useState} from 'react';
-import {View, StyleSheet, Text, Image, TouchableOpacity} from 'react-native';
 import CodeScannerPage from '../../components/molecules/Scanner/CodeScannerPage';
 
-const QRAssign = ({navigation, route}: {navigation: any; route: any}) => {
-  const [showScanner, setShowScanner] = useState(true);
+const CapturePhoto = ({navigation, route}: {navigation: any; route: any}) => {
+  const [showCamera, setShowCamera] = useState(true);
   const [scannedValue, setScannedValue] = useState(null);
 
-  const {godown, aisle, shelf} = route.params;
+  const {godown, aisle, shelf, QRScannedValue} = route.params;
 
   const handleScannedValue = (value: any) => {
     console.log('Scanned value:', value);
-    setScannedValue(value);
-    setShowScanner(false);
   };
 
   const navigateToNextScreen = (value: string) => {
-    navigation.navigate('CapturePhoto', {
+    navigation.navigate('CapturePhotoConfirmation', {
       godown,
       aisle,
       shelf,
@@ -26,12 +24,12 @@ const QRAssign = ({navigation, route}: {navigation: any; route: any}) => {
   return (
     <View style={styles.mainContainer}>
       <View style={styles.textContainer}>
-        <Text style={styles.text}>Scan QR Code to assign</Text>
+        <Text style={styles.text}>Capture Aisle Photo</Text>
       </View>
       <View style={styles.container}>
-        {showScanner && (
+        {showCamera && (
           <CodeScannerPage
-            setShow={setShowScanner}
+            setShow={setShowCamera}
             setScannedValue={handleScannedValue}
             navigation={navigation}
             route={route}
@@ -42,6 +40,8 @@ const QRAssign = ({navigation, route}: {navigation: any; route: any}) => {
     </View>
   );
 };
+
+export default CapturePhoto;
 
 const styles = StyleSheet.create({
   mainContainer: {
@@ -66,5 +66,3 @@ const styles = StyleSheet.create({
     fontSize: 24,
   },
 });
-
-export default QRAssign;

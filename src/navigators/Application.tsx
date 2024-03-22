@@ -47,6 +47,8 @@ import Transfer from '../screens/Transfer/Transfer';
 import ConfirmDialogue from '../screens/Assign/ConfirmDialogue';
 import PurchaseGodown from '../screens/purchase/PurchaseGodown';
 import PurchaseCamera from '../screens/purchase/PurchaseCamera';
+import CapturePhoto from '../screens/Assign/CapturePhoto';
+import CapturePhotoConfirmation from '../screens/Assign/CapturePhotoConfirmation';
 
 const Stack = createStackNavigator<any>();
 const Tab = createBottomTabNavigator();
@@ -179,6 +181,11 @@ const ApplicationNavigator = () => {
           <Stack.Screen name="AisleList" component={AisleList} />
           <Stack.Screen name="Popup" component={Popup} />
           <Stack.Screen name="QRAssign" component={QRAssign} />
+          <Stack.Screen name="CapturePhoto" component={CapturePhoto} />
+          <Stack.Screen
+            name="CapturePhotoConfirmation"
+            component={CapturePhotoConfirmation}
+          />
           <Stack.Screen name="AssignConfirm" component={AssignConfirm} />
           <Stack.Screen name="ConfirmDialogue" component={ConfirmDialogue} />
         </Stack.Navigator>
