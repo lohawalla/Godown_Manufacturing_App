@@ -45,6 +45,7 @@ import Purchase from '../screens/purchase/PurchaseList';
 import BillInfo from '../screens/purchase/BillInfo';
 import PurchaseGodown from '../screens/purchase/PurchaseGodown';
 import PurchaseCamera from '../screens/purchase/PurchaseCamera';
+import PurchaseAislePhotoCapture from '../screens/purchase/PurchaseAislePhotoCapture';
 import PurchaseAislePhoto from '../screens/purchase/PurchaseAislePhoto';
 
 const Stack = createStackNavigator<any>();
@@ -169,6 +170,12 @@ const ApplicationNavigator = () => {
                         component={PurchaseCamera}
                         options={{
                         title: "purchaseGodownCamera"
+                    }}/>
+                    <Stack.Screen
+                        name='PurchaseAislePhotoCapture'
+                        component={PurchaseAislePhotoCapture}
+                        options={{
+                        title: "PurchaseAislePhotoCapture"
                     }}/>
                     <Stack.Screen
                         name='PurchaseAislePhoto'

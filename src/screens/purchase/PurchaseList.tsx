@@ -14,6 +14,7 @@ import { useSalesList } from '../../services/purchase/hooks'
 
 const PurchaseList = ({navigation}:any):JSX.Element => {
   const [toggleBtn, setToggleBtn]=useState(true)
+  const [nextScan, setNextScan] = useState(true)
     const toggleView=(val:boolean):void=>{ 
         setToggleBtn(val)
     }
@@ -42,7 +43,7 @@ const PurchaseList = ({navigation}:any):JSX.Element => {
       <Navbar/>
       <ToggleButton titleOne={'Sales'} titleTwo={"Purchase"} toggleView={toggleView} toggleBtn={toggleBtn}/>
         <Text style={styles.heading}>Party List</Text>
-        <InputWithSuggestion/>
+        <InputWithSuggestion setNextScan={setNextScan}/>
       {toggleBtn && <View style={{padding:12, height:'70%'}}>
             <FlatList
             data={data?.data}
@@ -59,20 +60,20 @@ const PurchaseList = ({navigation}:any):JSX.Element => {
             />
           </View>} */}
 
-          <View style={styles.scanImage}>
+          {nextScan && <View style={styles.scanImage}>
             <TouchableOpacity onPress={()=>opencamera()}>
               <Image
               style={{borderRadius:60}}
                 source={require('../../assets/scannerImage.png')}
               />
             </TouchableOpacity>
-          </View>
+          </View>}
 
 
           {/* Primary Button */}
-        {/* <View style={{marginTop:-40}}>
-          {false && <PrimaryButton width={300} text='Next' onPress={()=>console.log(null)}/>}
-        </View> */}
+        {!nextScan && <View style={{marginTop:-40}}>
+          <PrimaryButton width={'96%'} text='Next' onPress={()=>console.log(null)}/>
+        </View>}
     </SafeAreaView>
   )
 }

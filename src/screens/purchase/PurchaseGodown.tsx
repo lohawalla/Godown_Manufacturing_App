@@ -6,13 +6,14 @@ import GodownNameCards from '../../components/molecules/GodownNameCard/GodownNam
 import PrimaryButton from '../../components/atoms/CustomButton/PrimaryButton'
 import SecondaryButton from '../../components/atoms/CustomButton/SecondaryButton'
 import { useRoute } from '@react-navigation/native'
+import PurchaseAislePhoto from './PurchaseAislePhoto'
 
 const PurchaseGodown = ({navigation}:any) => {
   // const route = useRoute();
   // const { id }:any = route.params;
   // console.log(id)
   const openCamera=()=>{
-    navigation.navigate('PurchaseAislePhoto')
+    navigation.navigate('PurchaseAislePhotoCapture')
   }
   return (
     <>
@@ -20,6 +21,7 @@ const PurchaseGodown = ({navigation}:any) => {
     <View style={styles.component}>
       <GodownNameCards/>
     </View>
+    {/* <PurchaseAislePhoto/> */}
     <View style={styles.bottomButton}>
       <SecondaryButton width={220} backgroundColor={''} icon={null} color={''} text='Unload To Another' onPress={()=>console.log(null)}/>
       <PrimaryButton width={120} text='Unload' onPress={()=>openCamera()}/>
