@@ -20,7 +20,7 @@ import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import IonIcon from 'react-native-vector-icons/Ionicons';
 import { CameraRoll } from '@react-native-camera-roll/camera-roll';
 
-const PhotoSave = ({setShow,setScannedValue,navigation,navigateToNextScreen, // Callback function received as prop
+const PhotoSave = ({navigation,title,navigateToNextScreen, // Callback function received as prop
 }: any) => {
   const camera:any = useRef<Camera>(null)
   const device = useCameraDevice('back');
@@ -33,20 +33,24 @@ const PhotoSave = ({setShow,setScannedValue,navigation,navigateToNextScreen, // 
   const capturePhoto=async()=>{
     console.log('PhotoSave')
         try {
-          const file = await camera.current.takePhoto()
-          await CameraRoll.saveAsset(`file://${file.path}`, {
-            type: 'photo',
-          })
-
-        Alert.alert('Success', 'Photo saved to gallery!');
+          const file:any = await camera.current.takePhoto()
+          const result:any = await fetch(`file://${file.path}`)
+          const data = await result.blob();
+          // const image = await CameraRoll.saveAsset(`file://${file.path}`, { // save image in gallery using cameraRoll
+          // type: 'photo',
+        // })
+        console.log(file.path)
+          navigateToNextScreen(file.path);
       } catch (error) {
         Alert.alert('Error', 'Failed to save photo to gallery!');
+        navigateToNextScreen();
         console.error(error);
       }
   }
  
   return (
     <View style={styles.mainContainer}>
+        <Text style={styles.title}>Capture Aisle Photo</Text>
         <View style={styles.container}>
         {device != null && (
             <Camera
@@ -95,10 +99,15 @@ const styles = StyleSheet.create({
     alignItems:'center',
   },
   cameraImage:{
-    marginTop:20
+    marginTop:20,
+  },
+  title:{
+    color:'white',
+    marginBottom:20,
+    fontSize:26
   },
   container: {
-    flex: 0.5,
+    flex: 0.6,
     width:'90%',
   },
   button: {
