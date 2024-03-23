@@ -9,7 +9,6 @@ import {useFetchAllGodowns} from '../../services/godown/hooks';
 interface Godown {
   id: string;
   name: string;
-  code: string;
 }
 
 const GodownList = ({navigation}: {navigation: any}) => {
@@ -18,6 +17,7 @@ const GodownList = ({navigation}: {navigation: any}) => {
   const [matchedData, setMatchedData] = useState<Godown[]>([]);
 
   const {data, isError, error, isLoading} = useFetchAllGodowns();
+  console.log('GODOWN-DATA:', data);
 
   useEffect(() => {
     if (data) {
@@ -46,11 +46,11 @@ const GodownList = ({navigation}: {navigation: any}) => {
   }
 
   const handleGodownPress = (godown: Godown) => {
+    console.log('selectedGodown:', godown);
     navigation.navigate('ShelfList', {
       godown: {
         godownId: godown.id,
         godownName: godown.name,
-        godownCode: godown.code,
       },
     });
   };
@@ -69,7 +69,7 @@ const GodownList = ({navigation}: {navigation: any}) => {
     return (
       <View style={styles.list}>
         <TouchableOpacity onPress={() => handleGodownPress(item)}>
-          <Text style={styles.text}>{item.name}</Text>
+          <Text>{item.name}</Text>
         </TouchableOpacity>
       </View>
     );
@@ -137,8 +137,5 @@ const styles = StyleSheet.create({
     borderRadius: 6,
     padding: 12,
     marginVertical: 8,
-  },
-  text: {
-    color: 'black',
   },
 });

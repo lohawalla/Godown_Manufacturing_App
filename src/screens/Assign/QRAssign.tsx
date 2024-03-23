@@ -1,60 +1,36 @@
 import React, {useState} from 'react';
-import {View, StyleSheet, Text, Image, TouchableOpacity} from 'react-native';
-import CodeScannerPage from '../../components/molecules/Scanner/CodeScannerPage';
+import {View, StyleSheet} from 'react-native';
+import {CodeScannerPage} from '../../components/molecules/Scanner/CodeScannerPage';
 
-const QRAssign = ({navigation, route}: {navigation: any; route: any}) => {
-  const [showScanner, setShowScanner] = useState(true);
-  const [scannedValue, setScannedValue] = useState(null);
-
-  const {godown, aisle, shelf} = route.params;
+const QRAssign = ({navigation}: {navigation: any}) => {
+  const [showScanner, setShowScanner] = useState(true); // State to control the visibility of the scanner
+  const [scannedValue, setScannedValue] = useState(null); // State to store the scanned value
 
   const handleScannedValue = (value: any) => {
+    // Handle the scanned value here as needed
+    console.log('Scanned value:', value);
+    // Scanned value: p4kf1041e6c0121
+    // For example, you can update your database or perform any other action
     setScannedValue(value);
-    setShowScanner(false);
-  };
-
-  const navigateToNextScreen = (value: string) => {
-    navigation.navigate('CapturePhoto', {
-      godown,
-      aisle,
-      shelf,
-      QRScannedValue: value,
-    });
+    setShowScanner(false); // Hide the scanner after scanning
   };
 
   return (
-    <CodeScannerPage
-      setShow={setShowScanner}
-      setScannedValue={handleScannedValue}
-      navigation={navigation}
-      route={route}
-      navigateToNextScreen={navigateToNextScreen}
-    />
+    <View style={styles.container}>
+      {showScanner && (
+        <CodeScannerPage
+          setShow={setShowScanner}
+          setScannedValue={handleScannedValue}
+          navigation={navigation}
+        />
+      )}
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
-  mainContainer: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: 'yellow',
-  },
   container: {
-    flex: 0.5,
-    width: '90%',
-    borderWidth: 5,
-    borderColor: 'white',
-    borderRadius: 10,
-  },
-  textContainer: {
-    marginVertical: 10,
-    backgroundColor: 'red',
-  },
-  text: {
-    color: 'white',
-    fontWeight: 'bold',
-    fontSize: 24,
+    flex: 1,
   },
 });
 
