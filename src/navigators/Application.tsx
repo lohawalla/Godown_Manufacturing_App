@@ -49,6 +49,7 @@ import CapturePhoto from '../screens/Assign/CapturePhoto';
 import CapturePhotoConfirmation from '../screens/Assign/CapturePhotoConfirmation';
 import PurchaseGodown from '../screens/purchase/PurchaseGodown';
 import PurchaseCamera from '../screens/purchase/PurchaseCamera';
+import PurchaseAislePhotoCapture from '../screens/purchase/PurchaseAislePhotoCapture';
 import PurchaseAislePhoto from '../screens/purchase/PurchaseAislePhoto';
 
 const Stack = createStackNavigator<any>();
@@ -137,6 +138,7 @@ const Home: React.FC = () => {
   );
 };
 const ApplicationNavigator = () => {
+<<<<<<< HEAD
   return (
     <GestureHandlerRootView style={{flex: 1}}>
       <NavigationContainer>
@@ -200,6 +202,61 @@ const ApplicationNavigator = () => {
       </NavigationContainer>
     </GestureHandlerRootView>
   );
+=======
+    return (
+        <GestureHandlerRootView style={{ flex: 1 }}>
+            <NavigationContainer>
+                <Stack.Navigator
+                    screenOptions={{ headerShown: false, animationTypeForReplace: 'push' }}
+                >
+                    <Stack.Screen name='HomeTabs' component={Home} />
+                    <Stack.Screen
+                        name='Page1'
+                        component={Page1}
+                        options={{
+                        title: "Reconciliation Page"
+                    }}/>
+                    <Stack.Screen
+                        name='Purchase'
+                        component={Purchase}
+                        options={{
+                        title: "purchage Page"
+                    }}/>
+                    <Stack.Screen
+                        name='BillInfo'
+                        component={BillInfo}
+                        options={{
+                        title: "Bill Info"
+                    }}/>
+                    <Stack.Screen
+                        name='purchaseGodown'
+                        component={PurchaseGodown}
+                        options={{
+                        title: "purchaseGodownInfo"
+                    }}/>
+                    <Stack.Screen
+                        name='purchaseGodownCamera'
+                        component={PurchaseCamera}
+                        options={{
+                        title: "purchaseGodownCamera"
+                    }}/>
+                    <Stack.Screen
+                        name='PurchaseAislePhotoCapture'
+                        component={PurchaseAislePhotoCapture}
+                        options={{
+                        title: "PurchaseAislePhotoCapture"
+                    }}/>
+                    <Stack.Screen
+                        name='PurchaseAislePhoto'
+                        component={PurchaseAislePhoto}
+                        options={{
+                        title: "PurchaseAislePhoto"
+                    }}/>
+                </Stack.Navigator>
+            </NavigationContainer>
+        </GestureHandlerRootView>
+    );
+>>>>>>> bd3c0cf313044e37a3a3f7305a16f1aba5e72019
 };
 const PlaceholderScreen = () => {
   return <View style={{flex: 1, backgroundColor: 'white'}} />;

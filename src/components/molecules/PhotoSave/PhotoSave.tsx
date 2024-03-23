@@ -30,10 +30,9 @@ import IonIcon from 'react-native-vector-icons/Ionicons';
 import {CameraRoll} from '@react-native-camera-roll/camera-roll';
 
 const PhotoSave = ({
-  setShow,
-  setCapturedImageData,
   navigation,
-  navigateToNextScreen,
+  title,
+  navigateToNextScreen, // Callback function received as prop
 }: any) => {
   const camera: any = useRef<Camera>(null);
   const device = useCameraDevice('back');
@@ -43,46 +42,27 @@ const PhotoSave = ({
   const [torch, setTorch] = useState(false);
   const isShowingAlert = useRef(false);
 
-  const blobToBase64 = (blob: Blob): Promise<string> => {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.onerror = reject;
-      reader.onload = () => {
-        if (typeof reader.result === 'string') {
-          resolve(reader.result);
-        } else {
-          reject(new Error('Unable to read result as string'));
-        }
-      };
-      reader.readAsDataURL(blob);
-    });
-  };
-
   const capturePhoto = async () => {
+    console.log('PhotoSave');
     try {
-      const file = await camera.current.takePhoto();
-      const result = await fetch(`file://${file.path}`);
-      const blobData = await result.blob();
-      const base64Data = await blobToBase64(blobData);
-      await CameraRoll.saveAsset(`file://${file.path}`, {
-        type: 'photo',
-      });
-
-      Alert.alert('Success', 'Photo saved to gallery!');
-      setCapturedImageData(base64Data);
-
-      navigateToNextScreen();
+      const file: any = await camera.current.takePhoto();
+      const result: any = await fetch(`file://${file.path}`);
+      const data = await result.blob();
+      // const image = await CameraRoll.saveAsset(`file://${file.path}`, { // save image in gallery using cameraRoll
+      // type: 'photo',
+      // })
+      console.log(file.path);
+      navigateToNextScreen(file.path);
     } catch (error) {
       Alert.alert('Error', 'Failed to save photo to gallery!');
+      navigateToNextScreen();
       console.error(error);
     }
   };
 
   return (
     <View style={styles.mainContainer}>
-      <View style={styles.textContainer}>
-        <Text style={styles.text}>Capture Photo</Text>
-      </View>
+      <Text style={styles.title}>Capture Aisle Photo</Text>
       <View style={styles.container}>
         {device != null && (
           <Camera
@@ -131,12 +111,14 @@ const styles = StyleSheet.create({
   cameraImage: {
     marginTop: 20,
   },
+  title: {
+    color: 'white',
+    marginBottom: 20,
+    fontSize: 26,
+  },
   container: {
-    flex: 0.5,
+    flex: 0.6,
     width: '90%',
-    borderWidth: 5,
-    borderColor: 'white',
-    borderRadius: 10,
   },
   button: {
     marginBottom: CONTENT_SPACING,

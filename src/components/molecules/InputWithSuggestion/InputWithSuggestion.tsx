@@ -9,7 +9,7 @@ import React, {useState} from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import RadioButton from '../../atoms/RadioButton/RadioButton';
 
-const InputWithSuggestion = () => {
+const InputWithSuggestion = ({setNextScan}:any) => {
   const numbers = [
     '15426223330',
     '15426215283',
@@ -29,23 +29,27 @@ const InputWithSuggestion = () => {
 
   const handleUpBtn = () => {
     setShowSuggestions(!showSuggestions);
+    setNextScan(!showSuggestions)
   };
 
   const handleDown = () => {
     setShowSuggestions(!showSuggestions);
+    setNextScan(!showSuggestions)
   };
 
   const handleRadioButtonPress = (label: string) => {
     setInputValue(label);
     setSelectedRadio(label);
     setShowSuggestions(false);
+    setNextScan(false)
   };
 
   const handleInputChange = (text: string) => {
     setInputValue(text);
     const matched = numbers.filter(number => number.includes(text));
     setMatchedNumbers(matched);
-    setShowSuggestions(text.length > 0);     
+    setShowSuggestions(text.length > 0);    
+    setNextScan(text.length > 0) 
   };
 
   const renderItem = ({item}: {item: string}) => (

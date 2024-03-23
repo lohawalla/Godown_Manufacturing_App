@@ -1,6 +1,13 @@
 import * as React from 'react';
 import {useCallback, useRef, useState} from 'react';
-import {Alert, AlertButton, Linking, StyleSheet, View} from 'react-native';
+import {
+  Alert,
+  AlertButton,
+  Linking,
+  StyleSheet,
+  View,
+  Image,
+} from 'react-native';
 import {
   Code,
   useCameraDevice,
@@ -78,39 +85,52 @@ const CodeScannerPage: React.FC<Props> = ({
   });
 
   return (
-    <View style={styles.container}>
-      {device != null && (
-        <Camera
-          style={StyleSheet.absoluteFill}
-          device={device}
-          isActive={isActive}
-          codeScanner={codeScanner}
-          torch={torch ? 'on' : 'off'}
-          enableZoomGesture={true}
-        />
-      )}
-      <StatusBarBlurBackground />
-      <View style={styles.rightButtonRow}>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => setTorch(!torch)}>
-          <IonIcon
-            name={torch ? 'flash' : 'flash-off'}
-            color="white"
-            size={24}
+    <View style={styles.mainContainer}>
+      <View style={styles.container}>
+        {device != null && (
+          <Camera
+            style={StyleSheet.absoluteFill}
+            device={device}
+            isActive={isActive}
+            codeScanner={codeScanner}
+            torch={torch ? 'on' : 'off'}
+            enableZoomGesture={true}
           />
+        )}
+        <StatusBarBlurBackground />
+        <View style={styles.rightButtonRow}>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => setTorch(!torch)}>
+            <IonIcon
+              name={torch ? 'flash' : 'flash-off'}
+              color="white"
+              size={24}
+            />
+          </TouchableOpacity>
+        </View>
+        <TouchableOpacity
+          style={styles.backButton}
+          onPress={() => navigation.goBack()}>
+          <IonIcon name="chevron-back" color="white" size={35} />
         </TouchableOpacity>
       </View>
       <TouchableOpacity
-        style={styles.backButton}
-        onPress={() => navigation.goBack()}>
-        <IonIcon name="chevron-back" color="white" size={35} />
+        style={styles.TorchButton}
+        onPress={() => setTorch(!torch)}>
+        <Image source={require('../../../assets/Torch.png')} />
       </TouchableOpacity>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
+  mainContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#333333',
+  },
   container: {
     flex: 1,
   },
@@ -132,6 +152,9 @@ const styles = StyleSheet.create({
     position: 'absolute',
     left: SAFE_AREA_PADDING.paddingLeft,
     top: SAFE_AREA_PADDING.paddingTop,
+  },
+  TorchButton: {
+    marginTop: 20,
   },
 });
 
