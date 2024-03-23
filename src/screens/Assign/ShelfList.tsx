@@ -4,29 +4,32 @@ import Navbar from '../Navbar/Navbar';
 import HeadingAssign from '../../components/atoms/Heading/HeadingAssign';
 import SearchInput from '../../components/atoms/SearchInput/SearchInput';
 import Seperator from '../../components/atoms/Seperator/Seperator';
-import {useFetchAllGodowns} from '../../services/godown/hooks';
+import {useFetchAllShelves} from '../../services/shelf/hooks';
 
-interface Godown {
+interface Shelf {
   id: string;
   name: string;
+  code: string;
 }
 
-const GodownList = ({navigation}: {navigation: any}) => {
+const ShelfList = ({navigation, route}: {navigation: any; route: any}) => {
   const [inputValue, setInputValue] = useState('');
-  const [godowns, setGodowns] = useState<Godown[]>([]);
-  const [matchedData, setMatchedData] = useState<Godown[]>([]);
+  const [shelf, setShelves] = useState<Shelf[]>([]);
+  const [matchedData, setMatchedData] = useState<Shelf[]>([]);
+  const {godown} = route.params;
 
-  const {data, isError, error, isLoading} = useFetchAllGodowns();
-  console.log('GODOWN-DATA:', data);
+  const {data, error, isError, isLoading} = useFetchAllShelves({
+    godownId: godown.godownId,
+  });
 
   useEffect(() => {
     if (data) {
-      const mappedGodowns: Godown[] = data.godowns?.map((godown: any) => ({
-        id: godown._id,
-        name: godown.godownName,
-        code: godown.godownCode,
+      const shelves = data.result?.map((result: any) => ({
+        id: result._id,
+        name: result.shelfName,
+        code: result.shelfCode,
       }));
-      setMatchedData(mappedGodowns);
+      setMatchedData(shelves);
     }
   }, [data]);
 
@@ -45,12 +48,13 @@ const GodownList = ({navigation}: {navigation: any}) => {
     );
   }
 
-  const handleGodownPress = (godown: Godown) => {
-    console.log('selectedGodown:', godown);
-    navigation.navigate('ShelfList', {
-      godown: {
-        godownId: godown.id,
-        godownName: godown.name,
+  const handleshelfPress = (shelf: any) => {
+    navigation.navigate('AisleList', {
+      godown,
+      shelf: {
+        shelfId: shelf.id,
+        shelfName: shelf.name,
+        shelfCode: shelf.code,
       },
     });
   };
@@ -58,17 +62,17 @@ const GodownList = ({navigation}: {navigation: any}) => {
   const handleInputChange = (text: string) => {
     setInputValue(text);
     if (matchedData) {
-      const matched = matchedData.filter((godown: Godown) =>
-        godown.name.toLowerCase().includes(text.toLowerCase()),
+      const matched = matchedData.filter((shelf: Shelf) =>
+        shelf.name.toLowerCase().includes(text.toLowerCase()),
       );
       setMatchedData(matched);
     }
   };
 
-  const renderItem = ({item}: {item: Godown}) => {
+  const renderItem = ({item}: {item: Shelf}) => {
     return (
       <View style={styles.list}>
-        <TouchableOpacity onPress={() => handleGodownPress(item)}>
+        <TouchableOpacity onPress={() => handleshelfPress(item)}>
           <Text>{item.name}</Text>
         </TouchableOpacity>
       </View>
@@ -81,8 +85,8 @@ const GodownList = ({navigation}: {navigation: any}) => {
       <View style={styles.contentContainer}>
         <View>
           <HeadingAssign
-            title="Godowns List"
-            source={require('../../theme/assets/godown.jpg')}
+            title="Shelf List"
+            source={require('../../theme/assets/Shelf.png')}
           />
         </View>
         <View style={styles.input}>
@@ -111,7 +115,7 @@ const GodownList = ({navigation}: {navigation: any}) => {
   );
 };
 
-export default GodownList;
+export default ShelfList;
 
 const styles = StyleSheet.create({
   container: {
