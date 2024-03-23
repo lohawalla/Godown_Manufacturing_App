@@ -1,3 +1,30 @@
+<<<<<<< HEAD
+import {StyleSheet, Text, View} from 'react-native';
+import React, {useState} from 'react';
+import PhotoSave from '../../components/molecules/PhotoSave/PhotoSave';
+
+const PurchaseAislePhoto = ({navigation, route}: any) => {
+  const [showScanner, setShowScanner] = useState(false);
+  const [scannedValue, setScannedValue] = useState(null);
+  const handleScannedValue = (value: any) => {
+    console.log('Scanned value:', value);
+    setScannedValue(value);
+    setShowScanner(false);
+  };
+  const navigateToNextScreen = () => {
+    navigation.navigate('CapturePhotoConfirmation');
+  };
+  return (
+    <PhotoSave
+      setShow={setShowScanner}
+      setScannedValue={handleScannedValue}
+      navigation={navigation}
+      route={route}
+      navigateToNextScreen={navigateToNextScreen}
+    />
+  );
+};
+=======
 import { StyleSheet, Text, View, Image, Alert } from 'react-native'
 import React from 'react'
 import SecondaryButton from '../../components/atoms/CustomButton/SecondaryButton'
@@ -34,10 +61,17 @@ const PurchaseAislePhoto = ({navigation}:any) => {
     </View>
   )
 }
+>>>>>>> bd3c0cf313044e37a3a3f7305a16f1aba5e72019
 
-export default PurchaseAislePhoto
+export default PurchaseAislePhoto;
 
 const styles = StyleSheet.create({
+<<<<<<< HEAD
+  container: {
+    flex: 0.5,
+  },
+});
+=======
     component:{
         flex:1,
         // justifyContent:'center',
@@ -67,3 +101,4 @@ const styles = StyleSheet.create({
         marginTop:'37%'
     }
 })
+>>>>>>> bd3c0cf313044e37a3a3f7305a16f1aba5e72019

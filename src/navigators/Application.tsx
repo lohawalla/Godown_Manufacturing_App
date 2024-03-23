@@ -32,7 +32,6 @@ import {Image} from '@gluestack-ui/themed';
 import ImageIndex from '../theme/AssestIndex';
 import Feather from 'react-native-vector-icons/Ionicons';
 import Assign from '../screens/Assign/Assign';
-import Transfer from '../screens/Transfer/Transfer';
 import History from '../screens/History/History';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import Page1 from '../screens/reconciliation/Page1';
@@ -43,6 +42,11 @@ import Popup from '../screens/Assign/Popup';
 import QRAssign from '../screens/Assign/QRAssign';
 import Purchase from '../screens/purchase/PurchaseList';
 import BillInfo from '../screens/purchase/BillInfo';
+import AssignConfirm from '../screens/Assign/AssignConfirm';
+import Transfer from '../screens/Transfer/Transfer';
+import ConfirmDialogue from '../screens/Assign/ConfirmDialogue';
+import CapturePhoto from '../screens/Assign/CapturePhoto';
+import CapturePhotoConfirmation from '../screens/Assign/CapturePhotoConfirmation';
 import PurchaseGodown from '../screens/purchase/PurchaseGodown';
 import PurchaseCamera from '../screens/purchase/PurchaseCamera';
 import PurchaseAislePhotoCapture from '../screens/purchase/PurchaseAislePhotoCapture';
@@ -81,7 +85,7 @@ const Home: React.FC = () => {
       />
       <Tab.Screen
         name="Assign"
-        component={Assign}
+        component={GodownList}
         options={{
           headerShown: false,
           tabBarLabel: 'Assign',
@@ -134,6 +138,71 @@ const Home: React.FC = () => {
   );
 };
 const ApplicationNavigator = () => {
+<<<<<<< HEAD
+  return (
+    <GestureHandlerRootView style={{flex: 1}}>
+      <NavigationContainer>
+        <Stack.Navigator
+          screenOptions={{headerShown: false, animationTypeForReplace: 'push'}}>
+          <Stack.Screen name="HomeTabs" component={Home} />
+          <Stack.Screen
+            name="Page1"
+            component={Page1}
+            options={{
+              title: 'Reconciliation Page',
+            }}
+          />
+          <Stack.Screen
+            name="Purchase"
+            component={Purchase}
+            options={{
+              title: 'purchage Page',
+            }}
+          />
+          <Stack.Screen
+            name="BillInfo"
+            component={BillInfo}
+            options={{
+              title: 'Bill Info',
+            }}
+          />
+          <Stack.Screen
+            name="purchaseGodown"
+            component={PurchaseGodown}
+            options={{
+              title: 'purchaseGodownInfo',
+            }}
+          />
+          <Stack.Screen
+            name="purchaseGodownCamera"
+            component={PurchaseCamera}
+            options={{
+              title: 'purchaseGodownCamera',
+            }}
+          />
+          <Stack.Screen
+            name="PurchaseAislePhoto"
+            component={PurchaseAislePhoto}
+            options={{
+              title: 'PurchaseAislePhoto',
+            }}
+          />
+          <Stack.Screen name="ShelfList" component={ShelfList} />
+          <Stack.Screen name="AisleList" component={AisleList} />
+          <Stack.Screen name="Popup" component={Popup} />
+          <Stack.Screen name="QRAssign" component={QRAssign} />
+          <Stack.Screen name="CapturePhoto" component={CapturePhoto} />
+          <Stack.Screen
+            name="CapturePhotoConfirmation"
+            component={CapturePhotoConfirmation}
+          />
+          <Stack.Screen name="AssignConfirm" component={AssignConfirm} />
+          <Stack.Screen name="ConfirmDialogue" component={ConfirmDialogue} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </GestureHandlerRootView>
+  );
+=======
     return (
         <GestureHandlerRootView style={{ flex: 1 }}>
             <NavigationContainer>
@@ -187,6 +256,7 @@ const ApplicationNavigator = () => {
             </NavigationContainer>
         </GestureHandlerRootView>
     );
+>>>>>>> bd3c0cf313044e37a3a3f7305a16f1aba5e72019
 };
 const PlaceholderScreen = () => {
   return <View style={{flex: 1, backgroundColor: 'white'}} />;
