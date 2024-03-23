@@ -52,6 +52,9 @@ import PurchaseGodown from '../screens/purchase/PurchaseGodown';
 import PurchaseCamera from '../screens/purchase/PurchaseCamera';
 import PurchaseAislePhotoCapture from '../screens/purchase/PurchaseAislePhotoCapture';
 import PurchaseAislePhoto from '../screens/purchase/PurchaseAislePhoto';
+import PurchaseUnload from '../screens/purchase/PurchaseUnload';
+import NotificationCard from '../components/molecules/Notification/NotificationCard';
+import Notifications from '../screens/Notifications/Notifications';
 
 const Stack = createStackNavigator<any>();
 const Tab = createBottomTabNavigator();
@@ -120,7 +123,7 @@ const Home: React.FC = () => {
       />
       <Tab.Screen
         name="History"
-        component={History}
+        component={Notifications}
         options={{
           headerShown: false,
           tabBarLabel: 'History',
@@ -187,6 +190,20 @@ const ApplicationNavigator = () => {
               title: 'PurchaseAislePhoto',
             }}
           />
+          <Stack.Screen
+            name="PurchaseAislePhotoCapture"
+            component={PurchaseAislePhotoCapture}
+            options={{
+              title: 'PurchaseAislePhoto',
+            }}
+          />
+          <Stack.Screen
+            name="PurchaseUnload"
+            component={PurchaseUnload}
+            options={{
+              title: 'PurchaseAislePhoto',
+            }}
+          />
           <Stack.Screen name="ShelfList" component={ShelfList} />
           <Stack.Screen name="AisleList" component={AisleList} />
           <Stack.Screen name="Popup" component={Popup} />
@@ -196,7 +213,7 @@ const ApplicationNavigator = () => {
             name="CapturePhotoConfirmation"
             component={CapturePhotoConfirmation}
           />
-          <Stack.Screen name="AssignConfirm" component={AssignConfirm} />
+          <Stack.Screen name="AssignConfirm" component={Assign} />
           <Stack.Screen name="ConfirmDialogue" component={ConfirmDialogue} />
         </Stack.Navigator>
       </NavigationContainer>
