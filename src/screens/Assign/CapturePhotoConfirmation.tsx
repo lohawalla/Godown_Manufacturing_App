@@ -5,9 +5,9 @@ import PrimaryButton from '../../components/atoms/CustomButton/PrimaryButton';
 import {useRoute} from '@react-navigation/native';
 import {CameraRoll} from '@react-native-camera-roll/camera-roll';
 
-const PurchaseAislePhoto = ({navigation}: any) => {
-  const route = useRoute();
-  const {image}: any = route.params;
+const CapturePhotoConfirmation = ({navigation, route}: any) => {
+  const {godown, aisle, shelf, QRScannedValue, image}: any = route.params;
+  console.log(aisle, QRScannedValue);
 
   const confirmPic = async () => {
     try {
@@ -16,6 +16,13 @@ const PurchaseAislePhoto = ({navigation}: any) => {
         type: 'photo',
       });
       Alert.alert('Success', 'Photo saved to gallery!');
+      navigation.navigate('AssignConfirm', {
+        godown,
+        aisle,
+        shelf,
+        QRScannedValue,
+        image,
+      });
     } catch (error) {
       Alert.alert('Error', 'Failed to save photo to gallery!');
     }
@@ -26,7 +33,7 @@ const PurchaseAislePhoto = ({navigation}: any) => {
   };
   return (
     <View style={styles.component}>
-      <Text style={styles.title}>Capture Aisle Photo</Text>
+      <Text style={styles.title}>Photo Preview</Text>
       <Image style={styles.image} source={{uri: 'file://' + image}} />
       <View style={styles.bottomButton}>
         <SecondaryButton
@@ -43,7 +50,7 @@ const PurchaseAislePhoto = ({navigation}: any) => {
   );
 };
 
-export default PurchaseAislePhoto;
+export default CapturePhotoConfirmation;
 
 const styles = StyleSheet.create({
   component: {

@@ -17,7 +17,6 @@ const ShelfList = ({navigation, route}: {navigation: any; route: any}) => {
   const [shelf, setShelves] = useState<Shelf[]>([]);
   const [matchedData, setMatchedData] = useState<Shelf[]>([]);
   const {godown} = route.params;
-  console.log('GODOWN:', godown);
 
   const {data, error, isError, isLoading} = useFetchAllShelves({
     godownId: godown.godownId,
@@ -50,7 +49,6 @@ const ShelfList = ({navigation, route}: {navigation: any; route: any}) => {
   }
 
   const handleshelfPress = (shelf: any) => {
-    console.log('selectedshelf:', shelf);
     navigation.navigate('AisleList', {
       godown,
       shelf: {

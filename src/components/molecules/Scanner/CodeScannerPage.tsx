@@ -1,6 +1,13 @@
 import * as React from 'react';
 import {useCallback, useRef, useState} from 'react';
-import {Alert, AlertButton, Linking, StyleSheet, View} from 'react-native';
+import {
+  Alert,
+  AlertButton,
+  Linking,
+  StyleSheet,
+  View,
+  Image,
+} from 'react-native';
 import {
   Code,
   useCameraDevice,
@@ -19,7 +26,7 @@ import {
 } from '../../../theme/Views/Constants';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import IonIcon from 'react-native-vector-icons/Ionicons';
- 
+
 // const showCodeAlert = (value: string, onDismissed: () => void): void => {
 //     const buttons: AlertButton[] = [
 //         {
@@ -39,7 +46,7 @@ import IonIcon from 'react-native-vector-icons/Ionicons';
 //     }
 //     Alert.alert('Scanned Code', value, buttons)
 // }
- 
+
 type Props = NativeStackScreenProps<Routes, 'CodeScannerPage'> & {
   setShow: React.Dispatch<React.SetStateAction<boolean>>;
   setScannedValue: React.Dispatch<React.SetStateAction<string | null>>;
@@ -57,7 +64,7 @@ const CodeScannerPage: React.FC<Props> = ({
   const isActive = isFocused && isForeground;
   const [torch, setTorch] = useState(false);
   const isShowingAlert = useRef(false);
- 
+
   const onCodeScanned = useCallback(
     (codes: Code[]) => {
       console.log(`Scanned ${codes.length} codes:`, codes);
@@ -65,20 +72,20 @@ const CodeScannerPage: React.FC<Props> = ({
       setShow(false);
       const value = codes[0]?.value;
       if (value == null || isShowingAlert.current) return;
- 
+
       navigateToNextScreen(value); // Call the callback function to navigate to the next screen with additional data
       isShowingAlert.current = true;
     },
     [navigateToNextScreen],
   );
- 
+
   const codeScanner = useCodeScanner({
     codeTypes: ['qr', 'ean-13'],
     onCodeScanned: onCodeScanned,
   });
- 
+
   return (
-    <View>
+    <View style={styles.mainContainer}>
       <View style={styles.container}>
         {device != null && (
           <Camera
@@ -108,17 +115,29 @@ const CodeScannerPage: React.FC<Props> = ({
           <IonIcon name="chevron-back" color="white" size={35} />
         </TouchableOpacity>
       </View>
+      <TouchableOpacity
+        style={styles.TorchButton}
+        onPress={() => setTorch(!torch)}>
+        <Image source={require('../../../assets/Torch.png')} />
+      </TouchableOpacity>
     </View>
   );
 };
- 
+
 const styles = StyleSheet.create({
-  mainContainer:{
-    flex:1
+  mainContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#333333',
   },
   container: {
-    flex: 0.5,
+    flex: 0.55,
     backgroundColor: 'red',
+    width: '90%',
+    borderWidth: 5,
+    borderColor: '#e2e8f0',
+    borderRadius: 10,
   },
   button: {
     marginBottom: CONTENT_SPACING,
@@ -139,7 +158,9 @@ const styles = StyleSheet.create({
     left: SAFE_AREA_PADDING.paddingLeft,
     top: SAFE_AREA_PADDING.paddingTop,
   },
+  TorchButton: {
+    marginTop: 20,
+  },
 });
- 
+
 export default CodeScannerPage;
- 
