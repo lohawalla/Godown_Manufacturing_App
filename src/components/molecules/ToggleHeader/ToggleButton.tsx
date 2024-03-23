@@ -5,7 +5,7 @@ import { Navbar } from '../../../screens'
 
 const ToggleButton = (props:{titleOne:String,titleTwo:String, toggleView:any, toggleBtn:boolean}):JSX.Element => {
   return (
-    <View style={styles.mainContainer}>
+    <View style={[styles.mainContainer]}>
         <View style={styles.container}>
             <View style={styles.toggleContainer}>
                 <View style={[styles.toggleBtn, !props.toggleBtn &&  styles.btnBackground]}>
@@ -28,11 +28,11 @@ export default ToggleButton
 
 const styles = StyleSheet.create({
     mainContainer:{
-        height:65
+        height:55
     },
     container:{
         flex:1,
-        alignItems:'center'
+        alignItems:'center',
     },
     toggleContainer:{
         padding:5,
@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
         flexDirection:'row',
         backgroundColor:'#bfc5ce',
         justifyContent:'space-evenly',
-        borderRadius:35
+        borderRadius:28
     },
     buttonText:{
         fontSize:14,

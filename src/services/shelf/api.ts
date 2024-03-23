@@ -1,5 +1,5 @@
 import {apiCall} from '..';
-import {allShelvesApiPath} from '../apiRoutes';
+import {allShelvesApiPath} from '../ApiRoutes';
 import {AllShelvesApiResponse} from './types';
 
 export const allShelvesApi = async (
