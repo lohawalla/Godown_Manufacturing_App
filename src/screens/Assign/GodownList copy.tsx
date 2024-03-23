@@ -1,3 +1,4 @@
+
 import {FlatList, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import Navbar from '../Navbar/Navbar';

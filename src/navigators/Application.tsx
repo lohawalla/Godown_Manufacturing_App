@@ -6,6 +6,7 @@ import {
   View,
 } from 'react-native';
 import React, {useEffect, useReducer, useRef} from 'react';
+
 import {
   createStackNavigator,
   HeaderStyleInterpolators,
