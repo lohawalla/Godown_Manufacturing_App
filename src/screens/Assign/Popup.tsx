@@ -18,9 +18,7 @@ type PopupScreenProps = StackScreenProps<RootStackParamList, 'Popup'>;
 const Popup: React.FC<PopupScreenProps> = ({route, navigation}) => {
   const {godown, aisle, shelf} = route.params;
 
-  const handlePress = () => {
-    console.log('button pressed');
-  };
+  const handlePress = () => {};
   return (
     <View style={styles.mainContainer}>
       <View style={styles.container}>

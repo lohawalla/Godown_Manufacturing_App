@@ -5,11 +5,13 @@ import PrimaryButton from '../../components/atoms/CustomButton/PrimaryButton';
 import {useMutation} from '@tanstack/react-query';
 import {assignQrCodeAisle} from '../../services/aisle/apis';
 import {AssignQrCodeAisleValue} from '../../services/aisle/types';
+import axios from 'axios';
+import {assignQrCodeAislePath} from '../../services/ApiRoutes';
 
 const AssignConfirm = ({navigation, route}: {navigation: any; route: any}) => {
   const {godown, shelf, aisle, QRScannedValue} = route.params;
 
-  const mutation = useMutation({
+  const {mutateAsync} = useMutation({
     mutationFn: (sendValue: AssignQrCodeAisleValue) =>
       assignQrCodeAisle(sendValue),
     onSuccess: data => {
@@ -19,10 +21,26 @@ const AssignConfirm = ({navigation, route}: {navigation: any; route: any}) => {
     },
   });
 
+  // const funccc: any = async (sendData: any) => {
+  //   try {
+  //     console.log('entry Done');
+  //     const response = await axios({
+  //       method: 'post',
+  //       url: assignQrCodeAislePath,
+  //       data: sendData,
+  //       withCredentials: true,
+  //     });
+  //     console.log('RESPONSE:', response.data);
+  //     return response.data;
+  //   } catch (err) {
+  //     console.log(err.response.data);
+  //   }
+  // };
+
   const handleAssign = () => {
     if (QRScannedValue) {
       navigation.navigate('ConfirmDialogue');
-      mutation.mutateAsync({
+      mutateAsync({
         aisleCode: aisle.code,
         qrCodeData: QRScannedValue,
       });

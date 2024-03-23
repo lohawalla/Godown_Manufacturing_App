@@ -18,7 +18,6 @@ const GodownList = ({navigation}: {navigation: any}) => {
   const [matchedData, setMatchedData] = useState<Godown[]>([]);
 
   const {data, isError, error, isLoading} = useFetchAllGodowns();
-  console.log('GODOWN-DATA:', data);
 
   useEffect(() => {
     if (data) {
@@ -47,7 +46,6 @@ const GodownList = ({navigation}: {navigation: any}) => {
   }
 
   const handleGodownPress = (godown: Godown) => {
-    console.log('selectedGodown:', godown);
     navigation.navigate('ShelfList', {
       godown: {
         godownId: godown.id,

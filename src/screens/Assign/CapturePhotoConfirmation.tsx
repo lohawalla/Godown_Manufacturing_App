@@ -12,9 +12,7 @@ const CapturePhotoConfirmation = ({
   const {godown, shelf, aisle, QRScannedValue, capturedImageData} =
     route.params;
 
-  const handleRetake = () => {
-    console.log('retake button clicked');
-  };
+  const handleRetake = () => {};
 
   const handleConfirm = () => {
     navigation.navigate('AssignConfirm', {

@@ -9,7 +9,6 @@ const QRAssign = ({navigation, route}: {navigation: any; route: any}) => {
   const {godown, aisle, shelf} = route.params;
 
   const handleScannedValue = (value: any) => {
-    console.log('Scanned value:', value);
     setScannedValue(value);
     setShowScanner(false);
   };
