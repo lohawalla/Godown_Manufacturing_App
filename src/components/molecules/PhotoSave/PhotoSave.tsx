@@ -43,7 +43,7 @@ const PhotoSave = ({
   const isShowingAlert = useRef(false);
 
   const capturePhoto = async () => {
-    console.log('PhotoSave');
+    // console.log('PhotoSave');
     try {
       const file: any = await camera.current.takePhoto();
       const result: any = await fetch(`file://${file.path}`);
@@ -51,7 +51,7 @@ const PhotoSave = ({
       // const image = await CameraRoll.saveAsset(`file://${file.path}`, { // save image in gallery using cameraRoll
       // type: 'photo',
       // })
-      console.log(file.path);
+      // console.log(file.path);
       navigateToNextScreen(file.path);
     } catch (error) {
       Alert.alert('Error', 'Failed to save photo to gallery!');

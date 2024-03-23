@@ -132,7 +132,12 @@ const styles = StyleSheet.create({
     backgroundColor: '#333333',
   },
   container: {
-    flex: 1,
+    flex: 0.55,
+    backgroundColor: 'red',
+    width: '90%',
+    borderWidth: 5,
+    borderColor: '#e2e8f0',
+    borderRadius: 10,
   },
   button: {
     marginBottom: CONTENT_SPACING,
