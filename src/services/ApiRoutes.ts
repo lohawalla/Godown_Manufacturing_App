@@ -17,6 +17,4 @@ export const allShelvesApiPath = `${basePath}api/v1/godownApp/shelf`;
 
 // aisle
 export const allAislesApiPath = `${basePath}api/v1/godownApp/aisle`;
-// export const assignQrCodeAislePath = `${basePath}api/v1/godownApp/aisle/assignQR`;
-
-export const assignQRPath = `${basePath}api/v1/godownApp/aisle/assignQR`;
+export const assignQrCodeAislePath = `${basePath}api/v1/godownApp/aisle/assignQR`;

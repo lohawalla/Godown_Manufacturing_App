@@ -6,7 +6,6 @@ import {useMutation} from '@tanstack/react-query';
 import {assignQrCodeAisle} from '../../services/aisle/apis';
 import {AssignQrCodeAisleValue} from '../../services/aisle/types';
 import axios from 'axios';
-import {assignQRPath} from '../../services/ApiRoutes';
 
 const AssignConfirm = ({navigation, route}: {navigation: any; route: any}) => {
   const {godown, aisle, shelf, QRScannedValue, image} = route.params;

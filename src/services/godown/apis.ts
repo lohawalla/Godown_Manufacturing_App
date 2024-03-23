@@ -1,5 +1,5 @@
 import {apiCall} from '..';
-import {allGodownsApiPath} from '../apiRoutes';
+import {allGodownsApiPath} from '../ApiRoutes';
 import {AllGodownsApiResponse} from './types';
 
 export const allGodownsApi = async (): Promise<AllGodownsApiResponse> => {

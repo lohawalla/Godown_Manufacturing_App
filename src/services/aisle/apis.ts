@@ -1,15 +1,10 @@
 import {apiCall} from '..';
-import {allAislesApiPath, allGodownsApiPath} from '../apiRoutes';
-import {assignQRPath} from '../apiRoutes';
+import {allAislesApiPath, assignQrCodeAislePath} from '../ApiRoutes';
 import {
   AllAislesApiResponse,
   AssignQrCodeAisleValue,
   AssignQrCodeAisleValueResponse,
 } from './types';
-
-console.log('PATH 1:', allAislesApiPath);
-console.log('PATH QR:', assignQRPath);
-console.log('PATH 3:', allGodownsApiPath);
 
 export const allAislesApi = async (
   shelfId: string,
@@ -27,9 +22,9 @@ export const assignQrCodeAisle = async (
 ): Promise<AssignQrCodeAisleValueResponse> => {
   const data = await apiCall<AssignQrCodeAisleValueResponse>(
     'post',
-    `${assignQRPath}`,
+    `${assignQrCodeAislePath}`,
     sendValue,
   );
-  console.log(`PATH IN ASIGN QR API:${assignQRPath}`);
+
   return data;
 };
