@@ -1,55 +1,50 @@
-import {Image, StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View, Image, Alert} from 'react-native';
 import React from 'react';
 import SecondaryButton from '../../components/atoms/CustomButton/SecondaryButton';
+import PrimaryButton from '../../components/atoms/CustomButton/PrimaryButton';
+import {useRoute} from '@react-navigation/native';
+import {CameraRoll} from '@react-native-camera-roll/camera-roll';
 
-const CapturePhotoConfirmation = ({
-  navigation,
-  route,
-}: {
-  navigation: any;
-  route: any;
-}) => {
-  const {godown, shelf, aisle, QRScannedValue, capturedImageData} =
-    route.params;
+const CapturePhotoConfirmation = ({navigation, route}: any) => {
+  const {godown, aisle, shelf, QRScannedValue, image}: any = route.params;
+  console.log(aisle, QRScannedValue);
 
-  const handleRetake = () => {};
-
-  const handleConfirm = () => {
-    navigation.navigate('AssignConfirm', {
-      godown,
-      shelf,
-      aisle,
-      QRScannedValue,
-      capturedImageData,
-    });
+  const confirmPic = async () => {
+    try {
+      const photo = await CameraRoll.saveAsset(`file://${image}`, {
+        // save image in gallery using cameraRoll
+        type: 'photo',
+      });
+      Alert.alert('Success', 'Photo saved to gallery!');
+      navigation.navigate('AssignConfirm', {
+        godown,
+        aisle,
+        shelf,
+        QRScannedValue,
+        image,
+      });
+    } catch (error) {
+      Alert.alert('Error', 'Failed to save photo to gallery!');
+    }
   };
 
+  const goBack = () => {
+    navigation.goBack();
+  };
   return (
-    <View style={styles.mainContainer}>
-      <Text style={styles.text}>Photo Preview</Text>
-      <View style={styles.container}>
-        <Image
-          source={{uri: `data:image/jpeg;base64,${capturedImageData}`}}
-          style={{width: 400, height: 400}}
-        />
-      </View>
-      <View style={styles.buttonContainer}>
+    <View style={styles.component}>
+      <Text style={styles.title}>Photo Preview</Text>
+      <Image style={styles.image} source={{uri: 'file://' + image}} />
+      <View style={styles.bottomButton}>
         <SecondaryButton
+          width={130}
+          backgroundColor={''}
+          icon={null}
+          color={''}
           text="Retake"
-          backgroundColor="white"
-          color="rgba(30, 41, 59, 1)"
-          width={150}
-          onPress={handleRetake}
-          icon={{name: 'retweet', size: 25, color: 'rgba(30, 41, 59, 1)'}}
+          onPress={goBack}
         />
-        <SecondaryButton
-          text="Confirm"
-          backgroundColor="rgba(30, 41, 59, 1)"
-          color="white"
-          width={150}
-          onPress={handleConfirm}
-          icon={{name: 'check', size: 25, color: 'white'}}
-        />
+        <PrimaryButton width={120} text="Confirm" onPress={confirmPic} />
       </View>
     </View>
   );
@@ -58,33 +53,32 @@ const CapturePhotoConfirmation = ({
 export default CapturePhotoConfirmation;
 
 const styles = StyleSheet.create({
-  mainContainer: {
-    backgroundColor: 'gray',
+  component: {
     flex: 1,
-    justifyContent: 'center',
+    // justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: 'white',
   },
-  container: {
-    flex: 0.5,
-    width: '90%',
-    borderWidth: 5,
-    borderColor: 'white',
-    borderRadius: 10,
-  },
-  buttonContainer: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    gap: 20,
-    marginTop: 50,
+  title: {
+    fontSize: 32,
+    fontWeight: 'bold',
+    color: 'black',
+    marginTop: '40%',
+    marginBottom: 10,
   },
   image: {
-    width: 300,
+    width: '90%',
+    borderWidth: 2,
+    borderColor: 'black',
+    borderRadius: 10,
+    height: 340,
+    backgroundColor: 'white',
   },
-  text: {
-    color: 'white',
-    fontSize: 30,
-    fontWeight: 'bold',
-    marginVertical: 10,
+  bottomButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-around',
+    padding: 8,
+    marginTop: '37%',
   },
 });

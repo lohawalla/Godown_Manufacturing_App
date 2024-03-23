@@ -13,9 +13,7 @@ const handleCancel = () => {
   console.log('cancel button clicked');
 };
 
-const handleDone = () => {
-  console.log('done button clicked');
-};
+const handleDone = () => {};
 
 const ConfirmationDialogeOne: React.FC<ConfirmationDialogProps> = ({
   task,

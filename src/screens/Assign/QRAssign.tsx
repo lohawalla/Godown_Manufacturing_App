@@ -23,22 +23,13 @@ const QRAssign = ({navigation, route}: {navigation: any; route: any}) => {
   };
 
   return (
-    <View style={styles.mainContainer}>
-      <View style={styles.textContainer}>
-        <Text style={styles.text}>Scan QR Code to assign</Text>
-      </View>
-      <View style={styles.container}>
-        {showScanner && (
-          <CodeScannerPage
-            setShow={setShowScanner}
-            setScannedValue={handleScannedValue}
-            navigation={navigation}
-            route={route}
-            navigateToNextScreen={navigateToNextScreen}
-          />
-        )}
-      </View>
-    </View>
+    <CodeScannerPage
+      setShow={setShowScanner}
+      setScannedValue={handleScannedValue}
+      navigation={navigation}
+      route={route}
+      navigateToNextScreen={navigateToNextScreen}
+    />
   );
 };
 
@@ -47,7 +38,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'gray',
+    backgroundColor: 'yellow',
   },
   container: {
     flex: 0.5,
@@ -58,6 +49,7 @@ const styles = StyleSheet.create({
   },
   textContainer: {
     marginVertical: 10,
+    backgroundColor: 'red',
   },
   text: {
     color: 'white',

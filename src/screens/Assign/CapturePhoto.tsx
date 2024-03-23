@@ -11,13 +11,14 @@ const CapturePhoto = ({navigation, route}: any) => {
     setScannedValue(value);
     setShowScanner(false);
   };
-  const navigateToNextScreen = () => {
+  const navigateToNextScreen = (capturedImageData: any) => {
     navigation.navigate('CapturePhotoConfirmation', {
       godown,
       shelf,
       aisle,
       QRScannedValue,
       capturedImageData,
+      image: capturedImageData,
     });
   };
 
@@ -28,7 +29,6 @@ const CapturePhoto = ({navigation, route}: any) => {
       navigation={navigation}
       route={route}
       navigateToNextScreen={navigateToNextScreen}
-      setCapturedImageData={setCapturedImageData}
     />
   );
 };
