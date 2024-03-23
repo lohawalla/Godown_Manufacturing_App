@@ -83,7 +83,7 @@ const Home: React.FC = () => {
       />
       <Tab.Screen
         name="Assign"
-        component={Assign}
+        component={GodownList}
         options={{
           headerShown: false,
           tabBarLabel: 'Assign',
