@@ -1,4 +1,11 @@
-import {FlatList, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {
+  ActivityIndicator,
+  FlatList,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import Navbar from '../Navbar/Navbar';
 import HeadingAssign from '../../components/atoms/Heading/HeadingAssign';
@@ -35,15 +42,16 @@ const ShelfList = ({navigation, route}: {navigation: any; route: any}) => {
 
   if (isLoading)
     return (
-      <View>
+      <View style={styles.info}>
+        <ActivityIndicator size={'large'} color={'green'} />
         <Text>Loading...</Text>
       </View>
     );
 
   if (!data) {
     return (
-      <View>
-        <Text>No data available</Text>
+      <View style={styles.info}>
+        <Text>No shelf available for this godown</Text>
       </View>
     );
   }
@@ -104,6 +112,12 @@ const ShelfList = ({navigation, route}: {navigation: any; route: any}) => {
           />
         </View>
 
+        {data.result.length === 0 && (
+          <View style={[styles.info, {marginTop: 80}]}>
+            <Text style={styles.text}>No shelf available for this godown</Text>
+          </View>
+        )}
+
         <FlatList
           data={matchedData}
           renderItem={renderItem}
@@ -141,5 +155,14 @@ const styles = StyleSheet.create({
     borderRadius: 6,
     padding: 12,
     marginVertical: 8,
+  },
+  info: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+
+  text: {
+    color: 'red',
   },
 });

@@ -1,10 +1,16 @@
-import {FlatList, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {
+  ActivityIndicator,
+  FlatList,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import Navbar from '../Navbar/Navbar';
 import HeadingAssign from '../../components/atoms/Heading/HeadingAssign';
 import SearchInput from '../../components/atoms/SearchInput/SearchInput';
 import Seperator from '../../components/atoms/Seperator/Seperator';
-import {useFetchAllShelves} from '../../services/shelf/hooks';
 import {useFetchAllAisles} from '../../services/aisle/hooks';
 
 interface Aisle {
@@ -48,7 +54,8 @@ const AisleList = ({navigation, route}: {navigation: any; route: any}) => {
 
   if (isLoading)
     return (
-      <View>
+      <View style={styles.info}>
+        <ActivityIndicator size={'large'} color={'green'} />
         <Text>Loading...</Text>
       </View>
     );
@@ -106,6 +113,12 @@ const AisleList = ({navigation, route}: {navigation: any; route: any}) => {
           />
         </View>
 
+        {data.result.length === 0 && (
+          <View style={[styles.info, {marginTop: 80}]}>
+            <Text style={styles.text}>No aisle available for this shelf</Text>
+          </View>
+        )}
+
         <FlatList
           data={matchedData}
           renderItem={renderItem}
@@ -143,6 +156,14 @@ const styles = StyleSheet.create({
     borderRadius: 6,
     padding: 12,
     marginVertical: 8,
-    // marginVertical: 8,
+  },
+  info: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+
+  text: {
+    color: 'red',
   },
 });

@@ -1,4 +1,11 @@
-import {FlatList, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {
+  ActivityIndicator,
+  FlatList,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import Navbar from '../Navbar/Navbar';
 import HeadingAssign from '../../components/atoms/Heading/HeadingAssign';
@@ -32,15 +39,16 @@ const GodownList = ({navigation}: {navigation: any}) => {
 
   if (isLoading)
     return (
-      <View>
+      <View style={styles.info}>
+        <ActivityIndicator size={'large'} color={'green'} />
         <Text>Loading...</Text>
       </View>
     );
 
   if (!data) {
     return (
-      <View>
-        <Text>No data available</Text>
+      <View style={styles.info}>
+        <Text>No Godown Available</Text>
       </View>
     );
   }
@@ -140,5 +148,10 @@ const styles = StyleSheet.create({
   },
   text: {
     color: 'black',
+  },
+  info: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
