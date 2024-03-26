@@ -143,5 +143,6 @@ const styles = StyleSheet.create({
     borderRadius: 6,
     padding: 12,
     marginVertical: 8,
+    // marginVertical: 8,
   },
 });
