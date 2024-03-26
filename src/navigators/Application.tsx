@@ -213,7 +213,7 @@ const ApplicationNavigator = () => {
             name="CapturePhotoConfirmation"
             component={CapturePhotoConfirmation}
           />
-          <Stack.Screen name="AssignConfirm" component={Assign} />
+          <Stack.Screen name="AssignConfirm" component={AssignConfirm} />
           <Stack.Screen name="ConfirmDialogue" component={ConfirmDialogue} />
         </Stack.Navigator>
       </NavigationContainer>
