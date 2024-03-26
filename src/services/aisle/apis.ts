@@ -13,7 +13,7 @@ export const allAislesApi = async (
     'get',
     `${allAislesApiPath}?shelfId=${shelfId}`,
   );
-  console.log(`PATH IN ALL AISLE API:${allAislesApiPath}`);
+
   return data;
 };
 

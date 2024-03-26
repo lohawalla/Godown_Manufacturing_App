@@ -7,17 +7,21 @@ import LinearGradient from 'react-native-linear-gradient';
 interface ConfirmationDialogProps {
   task: string;
   successMessage: string;
+  navigation: any;
 }
 
 const handleCancel = () => {
   console.log('cancel button clicked');
 };
 
-const handleDone = () => {};
+const handleDone = ({navigation}: {navigation: any}) => {
+  navigation.navigate('Home');
+};
 
 const ConfirmationDialogeOne: React.FC<ConfirmationDialogProps> = ({
   task,
   successMessage,
+  navigation,
 }) => {
   return (
     <View style={styles.mainContainer}>
@@ -45,7 +49,7 @@ const ConfirmationDialogeOne: React.FC<ConfirmationDialogProps> = ({
               backgroundColor="rgba(71, 85, 105, 0.2)"
               borderColor="rgba(71, 85, 105, 0.2)"
               text="Done"
-              onPress={handleDone}
+              onPress={() => handleDone({navigation})}
             />
           </View>
         </View>

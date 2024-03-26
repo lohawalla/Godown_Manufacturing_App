@@ -5,7 +5,6 @@ import PrimaryButton from '../../components/atoms/CustomButton/PrimaryButton';
 import {useMutation} from '@tanstack/react-query';
 import {assignQrCodeAisle} from '../../services/aisle/apis';
 import {AssignQrCodeAisleValue} from '../../services/aisle/types';
-import axios from 'axios';
 
 const AssignConfirm = ({navigation, route}: {navigation: any; route: any}) => {
   const {godown, aisle, shelf, QRScannedValue, image} = route.params;

@@ -55,7 +55,7 @@ export default CapturePhotoConfirmation;
 const styles = StyleSheet.create({
   component: {
     flex: 1,
-    // justifyContent: 'center',
+    justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: 'white',
   },
@@ -77,8 +77,9 @@ const styles = StyleSheet.create({
   bottomButton: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-around',
+    // justifyContent: 'space-between',
+    gap: 30,
     padding: 8,
-    marginTop: '37%',
+    marginTop: '30%',
   },
 });

@@ -35,7 +35,6 @@ const AisleList = ({navigation, route}: {navigation: any; route: any}) => {
   }, [data]);
 
   const handleAislePress = (aisle: any) => {
-    console.log('selectedAisle:', aisle);
     navigation.navigate('Popup', {
       aisle: {
         aisleId: aisle.id,
@@ -94,14 +93,14 @@ const AisleList = ({navigation, route}: {navigation: any; route: any}) => {
         </View>
         <View style={styles.input}>
           <SearchInput
-            width={330}
+            width={300}
             value={inputValue}
             onChangeText={handleInputChange}
           />
         </View>
         <View style={styles.seperator}>
           <Seperator
-            width={340}
+            width={300}
             height={1}
             backgroundColor="rgba(148, 163, 184, 1)"
           />

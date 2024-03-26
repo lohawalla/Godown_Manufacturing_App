@@ -7,7 +7,6 @@ export const apiCall = async <R, D = {}>(
   data?: D,
 ): Promise<R> => {
   try {
-    console.log('URL:', url, method);
     const response = await axios({
       method,
       url,
@@ -17,7 +16,6 @@ export const apiCall = async <R, D = {}>(
 
     return response.data;
   } catch (err) {
-    // console.log(err);
     if (err instanceof AxiosError && err.response) {
       if (
         err.response.data.success === true ||
