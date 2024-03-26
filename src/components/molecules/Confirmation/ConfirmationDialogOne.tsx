@@ -24,7 +24,6 @@ const ConfirmationDialogeOne: React.FC<ConfirmationDialogProps> = ({
   navigation,
 }) => {
   return (
-    <View style={styles.mainContainer}>
       <LinearGradient
         colors={['#E5F1FE', 'white']}
         start={{x: 0.1, y: 0}}
@@ -37,7 +36,6 @@ const ConfirmationDialogeOne: React.FC<ConfirmationDialogProps> = ({
           borderWidth: 1,
           borderColor: '#a6acb8',
         }}>
-        <View style={styles.dialogueContainer}>
           <CheckMark />
           <View style={styles.textContainer}>
             <Text style={styles.text1}>{task}</Text>
@@ -52,18 +50,11 @@ const ConfirmationDialogeOne: React.FC<ConfirmationDialogProps> = ({
               onPress={() => handleDone({navigation})}
             />
           </View>
-        </View>
       </LinearGradient>
-    </View>
   );
 };
 
 const styles = StyleSheet.create({
-  mainContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
   dialogueContainer: {
     paddingTop: 24,
     width: 328,

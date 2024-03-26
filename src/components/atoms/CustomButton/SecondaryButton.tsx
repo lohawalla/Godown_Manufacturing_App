@@ -23,7 +23,7 @@ const SecondaryButton: React.FC<SecondaryButtonProps> = ({
     <TouchableOpacity onPress={onPress}>
       <View style={[styles.textContainer, {backgroundColor}, {width}]}>
         <Icon {...icon} />
-        <Text style={[styles.text, {color}]}>{text}</Text>
+        <Text style={styles.text}>{text}</Text>
       </View>
     </TouchableOpacity>
   );

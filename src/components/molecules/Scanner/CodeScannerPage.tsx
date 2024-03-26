@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {useCallback, useRef, useState} from 'react';
-import {Alert, AlertButton, Linking, StyleSheet, View, Image} from 'react-native';
+import {Alert, AlertButton, Linking, StyleSheet, View, Image, Text} from 'react-native';
 import {
   Code,
   useCameraDevice,
@@ -42,6 +42,7 @@ import IonIcon from 'react-native-vector-icons/Ionicons';
  
 type Props = NativeStackScreenProps<Routes, 'CodeScannerPage'> & {
   setShow: React.Dispatch<React.SetStateAction<boolean>>;
+  title:String
   setScannedValue: React.Dispatch<React.SetStateAction<string | null>>;
   navigateToNextScreen: (value: string) => void; // Callback function to navigate to the next screen
 };
@@ -49,6 +50,7 @@ const CodeScannerPage: React.FC<Props> = ({
   setShow,
   setScannedValue,
   navigation,
+  title,
   navigateToNextScreen, // Callback function received as prop
 }: Props) => {
   const device = useCameraDevice('back');
@@ -79,6 +81,7 @@ const CodeScannerPage: React.FC<Props> = ({
  
   return (
     <View style={styles.mainContainer}>
+        <Text style={styles.scanTitle}>{title}</Text>
       <View style={styles.container}>
         {device != null && (
           <Camera
@@ -141,6 +144,11 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(140, 140, 140, 0.3)',
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  scanTitle:{
+    color:'white',
+    fontSize:26,
+    marginBottom:15
   },
   rightButtonRow: {
     position: 'absolute',

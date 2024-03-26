@@ -6,19 +6,13 @@ import CheckMark from '../../atoms/CheckMark/CheckMark';
 interface ConfirmationDialogProps {
   task: string;
   successMessage: string;
+  handleSuccess:any
 }
-
-const handleCancel = () => {
-  console.log('cancel button clicked');
-};
-
-const handleDone = () => {
-  console.log('done button clicked');
-};
 
 const ConfirmationDialogeTwo: React.FC<ConfirmationDialogProps> = ({
   task,
   successMessage,
+  handleSuccess
 }) => {
   return (
     <View style={styles.mainContainer}>
@@ -34,14 +28,14 @@ const ConfirmationDialogeTwo: React.FC<ConfirmationDialogProps> = ({
             backgroundColor="white"
             borderColor="white"
             text="Cancel"
-            onPress={handleCancel}
+            onPress={()=>handleSuccess('Cancel')}
           />
           <View style={styles.btnSeperator}></View>
           <PopupButton
             backgroundColor="rgba(71, 85, 105, 0.2)"
             borderColor="rgba(71, 85, 105, 0.2)"
             text="Done"
-            onPress={handleDone}
+            onPress={()=>handleSuccess('Done')}
           />
         </View>
       </View>

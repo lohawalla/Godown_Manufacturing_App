@@ -13,7 +13,7 @@ const PurchaseCamera = ({navigation, route}:any) => {
     setShowScanner(false);
   };
   const navigateToNextScreen=()=>{
-    navigation.navigate('Purchase')
+    navigation.navigate('purchaseGodown')
   }
   return (
         <CodeScannerPage
@@ -22,6 +22,7 @@ const PurchaseCamera = ({navigation, route}:any) => {
             navigation={navigation}
             route={route}
             navigateToNextScreen={navigateToNextScreen}
+            title={'Scan QR Code to Assign'}
           />
   )
 }
