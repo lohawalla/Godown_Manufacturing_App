@@ -1,5 +1,5 @@
-import axios, { AxiosError } from "axios";
-import { Alert } from "react-native";
+import axios, {AxiosError} from 'axios';
+import {Alert} from 'react-native';
 
 export const apiCall = async <R, D = {}>(
   method: 'get' | 'post' | 'patch' | 'delete',
@@ -13,8 +13,12 @@ export const apiCall = async <R, D = {}>(
       data,
       withCredentials: true,
     });
-
-    return response.data;
+    if (response.data.success === true) {
+      return response.data;
+    } else {
+      Alert.alert(response.data.message);
+      return response.data;
+    }
   } catch (err) {
     if (err instanceof AxiosError && err.response) {
       if (
@@ -36,5 +40,6 @@ export const apiCall = async <R, D = {}>(
         success: false,
         message: 'No Response From Server',
       } as R;
+    }
   }
 };

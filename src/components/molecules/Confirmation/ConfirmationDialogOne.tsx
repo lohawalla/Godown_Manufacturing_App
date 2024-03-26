@@ -2,6 +2,7 @@ import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import PopupButton from '../../atoms/CustomButton/PopupButton';
 import CheckMark from '../../atoms/CheckMark/CheckMark';
+import LinearGradient from 'react-native-linear-gradient';
 
 interface ConfirmationDialogProps {
   task: string;
@@ -13,13 +14,8 @@ const handleCancel = () => {
   console.log('cancel button clicked');
 };
 
-<<<<<<< HEAD
 const handleDone = ({navigation}: {navigation: any}) => {
   navigation.navigate('Home');
-=======
-const handleDone = () => {
-  console.log('done button clicked');
->>>>>>> ccc50dba5ed3c4f34b20d653b27b9b61e12c3a26
 };
 
 const ConfirmationDialogeOne: React.FC<ConfirmationDialogProps> = ({
@@ -29,7 +25,6 @@ const ConfirmationDialogeOne: React.FC<ConfirmationDialogProps> = ({
 }) => {
   return (
     <View style={styles.mainContainer}>
-<<<<<<< HEAD
       <LinearGradient
         colors={['#E5F1FE', 'white']}
         start={{x: 0.1, y: 0}}
@@ -57,24 +52,8 @@ const ConfirmationDialogeOne: React.FC<ConfirmationDialogProps> = ({
               onPress={() => handleDone({navigation})}
             />
           </View>
-=======
-      <View style={styles.dialogueContainer}>
-        <CheckMark />
-        <View style={styles.textContainer}>
-          <Text style={styles.text1}>{task}</Text>
-          <Text style={styles.text2}>{successMessage}</Text>
         </View>
-        <View style={styles.seperator}></View>
-        <View style={styles.btnContainer}>
-          <PopupButton
-            backgroundColor="rgba(71, 85, 105, 0.2)"
-            borderColor="rgba(71, 85, 105, 0.2)"
-            text="Done"
-            onPress={handleDone}
-          />
->>>>>>> ccc50dba5ed3c4f34b20d653b27b9b61e12c3a26
-        </View>
-      </View>
+      </LinearGradient>
     </View>
   );
 };

@@ -6,3 +6,13 @@ export interface AllAislesApiResponse {
     aisleCode: string;
   }[];
 }
+
+export interface AssignQrCodeAisleValue {
+  qrCodeData: string;
+  aisleCode: string;
+}
+
+export interface AssignQrCodeAisleValueResponse {
+  success: string;
+  message: string;
+}
