@@ -10,11 +10,16 @@ import { useRoute } from '@react-navigation/native'
 import { useSaleBill } from '../../services/purchase/hooks'
 import PrimaryButton from '../../components/atoms/CustomButton/PrimaryButton'
 import { SafeAreaView } from 'react-native-safe-area-context'
+import ConfirmDialogue from '../Assign/ConfirmDialogue'
+import ConfirmationDialogeOne from '../../components/molecules/Confirmation/ConfirmationDialogOne'
+import AssignConfirm from '../Assign/AssignConfirm'
+import ConfirmationDialogeTwo from '../../components/molecules/Confirmation/ConfirmationDialogeTwo'
+import PurchaseGodown from './PurchaseGodown'
 
 const BillInfo = ({ navigation }: any) => {
 
   const next=(val:number)=>{
-    navigation.navigate("purchaseGodown")
+    navigation.navigate("purchaseGodownCamera")
   }
   
   const route = useRoute();
@@ -35,6 +40,7 @@ const BillInfo = ({ navigation }: any) => {
   }
 
   return (
+    <>
     <SafeAreaView>
       <View>
         <Navbar/>
@@ -42,6 +48,7 @@ const BillInfo = ({ navigation }: any) => {
         <PrimaryButton width={'96%'} text='Unload' onPress={()=>next(id)}/>
       </View>
     </SafeAreaView>
+    </>
   )
 }
 

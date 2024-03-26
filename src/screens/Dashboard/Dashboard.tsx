@@ -1,6 +1,6 @@
 import { SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
-import { CodeScannerPage } from '../../components/molecules/Scanner/CodeScannerPage'
+// import { CodeScannerPage } from '../../components/molecules/Scanner/CodeScannerPage'
 import { useCameraPermission } from 'react-native-vision-camera';
 import { useAuthContext } from '../../components/auth/AuthGuard';
 import Navbar from '../Navbar/Navbar';
@@ -23,7 +23,7 @@ const Dashboard = ({ navigation }: any) => {
                     <Card name={'Reconciliation'} image={ImageIndex.notepad} height={150}/>
                 </TouchableOpacity>
                 <TouchableOpacity 
-                    onPress={() => navigation.navigate("Purchase")}
+                    onPress={() => navigation.navigate("CustomerList")}
                     style={{ marginVertical: 60 }}>
                     <Card name={'Purchase'} image={ImageIndex.cart} height={150} />
                 </TouchableOpacity>

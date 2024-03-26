@@ -14,7 +14,7 @@ const PurchaseAislePhoto = ({navigation}:any) => {
         const photo = await CameraRoll.saveAsset(`file://${image}`, { // save image in gallery using cameraRoll
               type: 'photo',
             })
-        Alert.alert('Success', 'Photo saved to gallery!');
+        // Alert.alert('Success', 'Photo saved to gallery!');
         navigation.navigate('PurchaseUnload')
     } catch (error) {
         Alert.alert('Error', 'Failed to save photo to gallery!');

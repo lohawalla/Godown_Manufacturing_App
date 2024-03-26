@@ -12,8 +12,10 @@ const PurchaseGodown = ({navigation}:any) => {
   // const route = useRoute();
   // const { id }:any = route.params;
   // console.log(id)
-  const openCamera=()=>{
-    navigation.navigate('PurchaseAislePhotoCapture')
+  const openCamera=(value:String)=>{
+    if(value=='confirm'){
+      navigation.navigate('PurchaseAislePhotoCapture')
+    }
   }
   return (
     <>
@@ -23,8 +25,8 @@ const PurchaseGodown = ({navigation}:any) => {
     </View>
     {/* <PurchaseAislePhoto/> */}
     <View style={styles.bottomButton}>
-      <SecondaryButton width={220} backgroundColor={''} icon={null} color={''} text='Unload To Another' onPress={()=>console.log(null)}/>
-      <PrimaryButton width={120} text='Unload' onPress={()=>openCamera()}/>
+      <SecondaryButton width={220} backgroundColor={''} icon={null} color={''} text='Unload To Another' onPress={()=>openCamera('back')}/>
+      <PrimaryButton width={120} text='Unload' onPress={()=>openCamera('confirm')}/>
     </View>
     </>
   )

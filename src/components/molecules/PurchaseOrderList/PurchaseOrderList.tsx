@@ -21,7 +21,7 @@ type IndicatorType = {
     onPress:any
 }
 
-const PartyListCard = ({onPress, status, backgroundColor, text,borderWidth, smallText, primaryImage, qrImage, DateTime , Name, billNumber, salesNumber, purchaseNumber}: IndicatorType):JSX.Element => {
+const PartyListCard = ({onPress, status,color, backgroundColor, text,borderWidth, smallText, primaryImage, qrImage, DateTime , Name, billNumber, salesNumber, purchaseNumber}: IndicatorType):JSX.Element => {
     return (
         <TouchableOpacity onPress={onPress}>
         <LinearGradient colors={['#0078FB29', '#0078FB0A']} style={{ flexDirection: 'column', borderWidth: 1, borderColor: 'white', borderRadius: 15, padding: 18, marginBottom:10 }}>
@@ -30,17 +30,17 @@ const PartyListCard = ({onPress, status, backgroundColor, text,borderWidth, smal
                 {/* Left View */}
                 <View style={{ flexDirection: 'row'}}>
                     {/* Image View */}
-                    {/* <View>
+                    <View>
                         <Image style={{ width: 50, height: 50, borderRadius: 100, borderWidth: 1, borderColor: 'white', marginRight: 10 }} source={{ uri: primaryImage }} />
-                    </View> */}
+                    </View>
     
                     {/* Name View */}
                     <View>
                         <Text style={{ color: '#64748b' }}>{DateTime}</Text>
-                        <Text style={{ fontWeight: 'bold', fontSize: 18, color: '#1e293b', width:190 }}>{Name}</Text>
+                        <Text style={{ fontWeight: 'bold', fontSize: 18, color: '#1e293b', width:120 }}>{Name}</Text>
                     </View>
                     <View style={{marginTop:4}}>
-                        <StatusText color={'#fb8200'} backgroundColor={backgroundColor || '#ffede7'} text={text || status} width={typeof smallText !== undefined ? 80 : 80} borderWidth={borderWidth && borderWidth} smallText={smallText && smallText}/>
+                        <StatusText color={color || '#fb8200'} backgroundColor={backgroundColor || '#ffede7'} text={text || status} width={typeof smallText !== undefined ? 80 : 80} borderWidth={borderWidth && borderWidth} smallText={smallText && smallText}/>
                     </View>
                 </View>
                 {/* Right View */}
@@ -50,9 +50,9 @@ const PartyListCard = ({onPress, status, backgroundColor, text,borderWidth, smal
             </View>
             {/* bottom view */}
             <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                <NumberInfo numberName={'purchase Number'} uniqueNumber={purchaseNumber} />
-                {/* <NumberInfo numberName={'Sales Number'} uniqueNumber={salesNumber} /> */}
+                <NumberInfo numberName={'Sales Number'} uniqueNumber={salesNumber} />
                 <NumberInfo numberName={'Bill Number'} uniqueNumber={billNumber} />
+                <NumberInfo numberName={'purchase Number'} uniqueNumber={purchaseNumber} />
             </View>
         </LinearGradient>
         </TouchableOpacity>

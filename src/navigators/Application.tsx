@@ -41,20 +41,21 @@ import AisleList from '../screens/Assign/AisleList';
 import ShelfList from '../screens/Assign/ShelfList';
 import Popup from '../screens/Assign/Popup';
 import QRAssign from '../screens/Assign/QRAssign';
-import Purchase from '../screens/purchase/PurchaseList';
-import BillInfo from '../screens/purchase/BillInfo';
+import PurchaseList from '../screens/purchase/CustomerPurchaseList';
+import BillInfo from '../screens/purchase/PurchaseBillInfo';
 import AssignConfirm from '../screens/Assign/AssignConfirm';
 import Transfer from '../screens/Transfer/Transfer';
 import ConfirmDialogue from '../screens/Assign/ConfirmDialogue';
 import CapturePhoto from '../screens/Assign/CapturePhoto';
 import CapturePhotoConfirmation from '../screens/Assign/CapturePhotoConfirmation';
 import PurchaseGodown from '../screens/purchase/PurchaseGodown';
-import PurchaseCamera from '../screens/purchase/PurchaseCamera';
 import PurchaseAislePhotoCapture from '../screens/purchase/PurchaseAislePhotoCapture';
 import PurchaseAislePhoto from '../screens/purchase/PurchaseAislePhoto';
 import PurchaseUnload from '../screens/purchase/PurchaseUnload';
 import NotificationCard from '../components/molecules/Notification/NotificationCard';
 import Notifications from '../screens/Notifications/Notifications';
+import CustomerList from '../screens/purchase/CustomerList'
+import PurchaseCamera from '../screens/purchase/UnloadQR';
 
 const Stack = createStackNavigator<any>();
 const Tab = createBottomTabNavigator();
@@ -155,9 +156,16 @@ const ApplicationNavigator = () => {
               title: 'Reconciliation Page',
             }}
           />
+            <Stack.Screen
+              name="CustomerList"
+              component={CustomerList}
+              options={{
+                title: 'CustomerList',
+              }}
+            />
           <Stack.Screen
-            name="Purchase"
-            component={Purchase}
+            name="PurchaseList"
+            component={PurchaseList}
             options={{
               title: 'purchage Page',
             }}

@@ -7,24 +7,21 @@ import { useQuery } from '@tanstack/react-query'
 import { FlatList } from 'react-native-gesture-handler'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import PartyListCard from '../../components/molecules/PartyListCard/PartyListCard'
+import CustomerListCard from '../../components/molecules/PurchaseOrderList/CustomerListCard'
 import PrimaryButton from '../../components/atoms/CustomButton/PrimaryButton'
 import InputWithSuggestion from '../../components/molecules/InputWithSuggestion/InputWithSuggestion'
 import { fetchSalesData } from '../../services/purchase/api'
-import { useSalesList } from '../../services/purchase/hooks'
+import { usePurchaseParties, useSalesList } from '../../services/purchase/hooks'
 
 const PurchaseList = ({navigation}:any):JSX.Element => {
-  const [toggleBtn, setToggleBtn]=useState(true)
   const [nextScan, setNextScan] = useState(true)
-    const toggleView=(val:boolean):void=>{ 
-        setToggleBtn(val)
-    }
 
 
-  const {data, isError, error, isLoading} = useSalesList();
+  const {data, isError, error, isLoading} = usePurchaseParties();
+  console.log('------->>>>>>>>> purchase parties',data?.result?.data)
 
   const next=(val:number)=>{
-    navigation.navigate("BillInfo", {id:val})
-    console.log(val)
+    navigation.navigate("PurchaseList", {id:val})
   }
   
   const opencamera=()=>{
@@ -41,25 +38,15 @@ const PurchaseList = ({navigation}:any):JSX.Element => {
   return (
     <SafeAreaView>
       <Navbar/>
-      <ToggleButton titleOne={'Sales'} titleTwo={"Purchase"} toggleView={toggleView} toggleBtn={toggleBtn}/>
-        <Text style={styles.heading}>Party List</Text>
         <InputWithSuggestion setNextScan={setNextScan}/>
-      {toggleBtn && <View style={{padding:12, height:'70%'}}>
+        <Text style={styles.heading}>Customer List</Text>
+      <View style={{padding:12, height:'75%'}}>
             <FlatList
-            data={data?.data}
-            renderItem={({item}:any):JSX.Element => <PartyListCard onPress={()=>next(item._id)} primaryImage='https://shorturl.at/dlpDG' qrImage='https://rb.gy/m8zvbd' DateTime={item.createdAt.substring(0, 10)} Name={item.partyId.partyName.substring(0, 13)+'...'} status='pending' billNumber={item?.billNumber} salesNumber={item?.salesNumber} purchaseNumber={item?.purchaseNumber}/>}
+            data={data?.result?.data}
+            renderItem={({item}:any):JSX.Element => <CustomerListCard onPress={()=>next(item._id)} primaryImage='https://shorturl.at/dlpDG' partyCode={item.partyCode}  Name={item.partyName.substring(0, 13)+'...'}/>}
             keyExtractor={item => item._id}
             />
-        </View>}
-
-        {/* {!toggleBtn && <View style={{padding:12, height:'65%'}}>
-            <FlatList
-            data={data?.data.products}
-            renderItem={({item}:any):JSX.Element => <PartyListCard primaryImage='https://shorturl.at/dlpDG' qrImage='https://rb.gy/m8zvbd' DateTime='07/10/23, 02:00pm' Name='danish' status='pending' />}
-            keyExtractor={item => item.id}
-            />
-          </View>} */}
-
+        </View>
           {nextScan && <View style={styles.scanImage}>
             <TouchableOpacity onPress={()=>opencamera()}>
               <Image
@@ -83,7 +70,9 @@ export default PurchaseList
 const styles = StyleSheet.create({
   heading:{
     marginLeft:'4%',
-    fontWeight:'bold'
+    fontWeight:'bold',
+    marginTop:10,
+    fontSize:18
   },
   scanImage:{
     marginTop:-100,
