@@ -19,7 +19,7 @@ const GodownNameCards = () => {
                     <Text style={{fontWeight:'700',fontSize:16,lineHeight:18.67,color:'#475569'}}>120 KG</Text>
                 </View>
                 <View style={{alignItems:'center'}}>
-                    <Text style={{color:'#1E293B'}}>&#x2043; Inward Quantity</Text>
+                    <Text style={{color:'#1E293B'}}>Inward Quantity</Text>
                     <Text style={{fontWeight:'700',fontSize:16,lineHeight:18.67,color:'#475569'}}>50 KG</Text>
                 </View>
             </View>

@@ -1,5 +1,5 @@
-import axios, {AxiosError} from 'axios';
-import {Alert} from 'react-native';
+import axios, { AxiosError } from "axios";
+import { Alert } from "react-native";
 
 export const apiCall = async <R, D = {}>(
   method: 'get' | 'post' | 'patch' | 'delete',
@@ -36,6 +36,5 @@ export const apiCall = async <R, D = {}>(
         success: false,
         message: 'No Response From Server',
       } as R;
-    }
   }
 };

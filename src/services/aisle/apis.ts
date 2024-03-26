@@ -1,10 +1,6 @@
 import {apiCall} from '..';
-import {allAislesApiPath, assignQrCodeAislePath} from '../ApiRoutes';
-import {
-  AllAislesApiResponse,
-  AssignQrCodeAisleValue,
-  AssignQrCodeAisleValueResponse,
-} from './types';
+import {allAislesApiPath} from '../ApiRoutes';
+import {AllAislesApiResponse} from './types';
 
 export const allAislesApi = async (
   shelfId: string,
@@ -13,18 +9,5 @@ export const allAislesApi = async (
     'get',
     `${allAislesApiPath}?shelfId=${shelfId}`,
   );
-
-  return data;
-};
-
-export const assignQrCodeAisle = async (
-  sendValue: AssignQrCodeAisleValue,
-): Promise<AssignQrCodeAisleValueResponse> => {
-  const data = await apiCall<AssignQrCodeAisleValueResponse>(
-    'post',
-    `${assignQrCodeAislePath}`,
-    sendValue,
-  );
-
   return data;
 };

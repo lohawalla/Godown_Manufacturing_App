@@ -12,7 +12,7 @@ const AssignConfirm = ({navigation, route}: {navigation: any; route: any}) => {
   const {mutateAsync} = useMutation({
     mutationFn: (sendValue: AssignQrCodeAisleValue) =>
       assignQrCodeAisle(sendValue),
-    onSuccess: data => {
+    onSuccess:: data => {
       if (data.success) {
         console.log('Data sent successfully', data);
       }
