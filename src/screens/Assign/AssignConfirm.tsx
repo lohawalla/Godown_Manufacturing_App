@@ -1,5 +1,5 @@
 import {StyleSheet, Text, View} from 'react-native';
-import React, {useState} from 'react';
+import React from 'react';
 import AssignConfirmCard from '../../components/molecules/AssignConfirmCard/AssignConfirmCard';
 import PrimaryButton from '../../components/atoms/CustomButton/PrimaryButton';
 import {useMutation} from '@tanstack/react-query';
