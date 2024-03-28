@@ -28,6 +28,8 @@ const styles = StyleSheet.create({
         borderRadius: 50,
         paddingVertical: 0,
         paddingHorizontal: 8,
+        height:30,
+        justifyContent:'center'
     }
 })
 export default index

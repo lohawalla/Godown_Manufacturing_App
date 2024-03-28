@@ -13,7 +13,7 @@ const CustomerList = ({navigation}:any):JSX.Element => {
 
 
   const {data, isError, error, isLoading} = usePurchaseParties();
-  console.log('------->>>>>>>>> purchase parties',data?.result?.data)
+  // console.log('------->>>>>>>>> purchase parties',data?.result?.data)
 
   const next=(val:number)=>{
     navigation.navigate("CustomerPurchaseOrders", {id:val})
@@ -33,7 +33,7 @@ const CustomerList = ({navigation}:any):JSX.Element => {
   return (
     <SafeAreaView>
       <Navbar/>
-        <InputWithSuggestion setNextScan={setNextScan}/>
+        <InputWithSuggestion title={'Choose Customer.... |'} setNextScan={setNextScan}/>
         <Text style={styles.heading}>Customer List</Text>
       <View style={{padding:12, height:'75%'}}>
             <FlatList

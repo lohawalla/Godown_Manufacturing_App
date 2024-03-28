@@ -14,7 +14,7 @@ const RawMaterial = ({data}:any) => {
     }
 
     return (
-        <View style={{height:'84%'}}>
+        <View style={{height:'82%'}}>
             <LinearGradient colors={['#0078FB29', '#0078FB0A']} style={{ paddingVertical: 16, paddingHorizontal: 12, borderWidth: 1, margin: 12, borderRadius: 8, borderColor: '#FFFFFF73' }}>
                 <View >
                     <StatusIndicator color={'#FB8200'} backgroundColor={'#FFEDE7'} text={'PENDING'} width={60} />

@@ -8,19 +8,25 @@ import SecondaryButton from '../../components/atoms/CustomButton/SecondaryButton
 import { useRoute } from '@react-navigation/native'
 import PurchaseAislePhoto from './PurchaseAislePhoto'
 
-const PurchaseAisleScanner = ({navigation}:any) => {
+const GodownUnload = ({navigation}:any) => {
   // const route = useRoute();
   // const { id }:any = route.params;
   // console.log(id)
   const openCamera=(value:String)=>{
     if(value=='confirm'){
       navigation.navigate('PurchaseAislePhotoCapture')
+    }else{
+      navigation.navigate('UnloadQR')
     }
   }
   return (
     <>
     <Navbar/>
     <View style={styles.component}>
+      <View style={styles.title}>
+        <Text>Aisle List</Text>
+        <Text>Total Qunatity Unload(50)kg</Text>
+      </View>
       <GodownNameCards/>
     </View>
     {/* <PurchaseAislePhoto/> */}
@@ -32,7 +38,7 @@ const PurchaseAisleScanner = ({navigation}:any) => {
   )
 }
 
-export default PurchaseAisleScanner
+export default GodownUnload
 
 const styles = StyleSheet.create({
   component:{
@@ -42,6 +48,12 @@ const styles = StyleSheet.create({
     flexDirection:'row',
     alignItems:'center',
     justifyContent:'space-around',
-    padding:8
+    padding:8,
+    marginBottom:30
+  },
+  title:{
+    flexDirection:'row',
+    justifyContent:'space-between',
+    padding:10
   }
 })
