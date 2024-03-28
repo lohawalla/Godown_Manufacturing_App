@@ -37,7 +37,7 @@ const CustomerPurchaseOrders = ({navigation}:any):JSX.Element => {
     <SafeAreaView>
       <Navbar/>
         <Text style={styles.heading}>Party List</Text>
-        <InputWithSuggestion setNextScan={setNextScan}/>
+        <InputWithSuggestion title={'Choose Purchase Order no.... |'} setNextScan={setNextScan}/>
         <View style={{padding:12, height:'78%'}}>
             <FlatList
             data={data?.data}

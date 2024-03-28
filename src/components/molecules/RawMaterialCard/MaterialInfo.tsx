@@ -19,7 +19,7 @@ const MaterialInfo = ({data}:any) => {
                     <Text style={{ color: '#1E293B', fontWeight: '500', fontSize: 12 }}>M.CODE</Text>
                     <Text style={{ color: '#64748B', fontWeight: '700', fontSize: 14 }}>{data?.Items[0]?.MCode}</Text>
                 </View>
-                <View>
+                <View style={{padding:5}}>
                     <StatusIndicator color={'white'} backgroundColor={'#1E293B'} text={'12:02:2023'} smallText={'DUE DATE'}  width={100}/>
                 </View>
                 <View style={{ alignContent: 'flex-end' }}>
@@ -28,8 +28,8 @@ const MaterialInfo = ({data}:any) => {
                 </View>
             </View>
             {/* Bottom */}
-            <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignContent: 'center', marginTop: 10,borderWidth:1,borderRadius:4,borderColor:'#94A3B8' }}>
-                <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+            <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignContent: 'center', marginTop: 10,borderWidth:1,borderRadius:4,borderColor:'#94A3B8', height:90, padding:8 }}>
+                {/* <View style={{ justifyContent: 'center', alignItems: 'center' }}>
                     <Text style={{ color: '#1E293B', fontSize: 12, fontWeight: '500' }}>Godown</Text>
                     <DropDownPicker
                         style={{ width: 88, height: 30, backgroundColor: 'transparent', borderWidth: 0 }}
@@ -44,14 +44,14 @@ const MaterialInfo = ({data}:any) => {
                         placeholder={'Choose'}
                         textStyle={{ fontSize: 10 }}
                     />
-                </View>
+                </View> */}
                 <View style={{ width: 72, height: 68, justifyContent: 'center', alignItems: 'center' }}>
-                    <Text style={{ color: '#1E293B', fontSize: 12, fontWeight: '500' }}>Purchase Quantity</Text>
-                    <Text>{data?.Items[0]?.salesOrders[0]?.quantity}</Text>
+                    <Text style={{ color: '#1E293B', fontSize: 12, fontWeight: '500', textAlign:'center', marginBottom:5 }}>Purchase Quantity</Text>
+                    <Text style={{textAlign:'center'}}>{data?.Items[0]?.salesOrders[0]?.quantity}</Text>
                 </View>
                 <View style={{ width: 72, height: 68, justifyContent: 'center' }}>
-                    <Text style={{ color: '#1E293B', fontSize: 12, fontWeight: '500',marginTop:10}}>Input Quantity</Text>
-                    <TextInput placeholder='Type...' style={{marginTop:0}}/>
+                    <Text style={{ color: '#1E293B', fontSize: 12, fontWeight: '500',marginTop:10, textAlign:'center', marginBottom:5}}>Input Quantity</Text>
+                    <TextInput placeholder='Type...' style={{marginTop:0, textAlign:'center', borderWidth:1, borderRadius:5, height:40}}/>
                 </View>
             </View>
         </View>

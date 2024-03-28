@@ -9,7 +9,7 @@ import React, {useState} from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import RadioButton from '../../atoms/RadioButton/RadioButton';
 
-const InputWithSuggestion = ({setNextScan}:any) => {
+const InputWithSuggestion = ({setNextScan, title}:any) => {
   const numbers = [
     '15426223330',
     '15426215283',
@@ -72,7 +72,7 @@ const InputWithSuggestion = ({setNextScan}:any) => {
           inputValue ? {backgroundColor: 'rgba(30, 41, 59, 1)'} : null,
         ]}>
         <TextInput
-          placeholder="Choose sales Number...|"
+          placeholder={title}
           value={inputValue}
           onChangeText={handleInputChange}
           style={inputValue ? {color: 'white'} : null}

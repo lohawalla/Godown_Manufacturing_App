@@ -48,7 +48,7 @@ import Transfer from '../screens/Transfer/Transfer';
 import ConfirmDialogue from '../screens/Assign/ConfirmDialogue';
 import CapturePhoto from '../screens/Assign/CapturePhoto';
 import CapturePhotoConfirmation from '../screens/Assign/CapturePhotoConfirmation';
-import PurchaseAisleScanner from '../screens/purchase/PurchaseAisleScanner';
+import GodownUnload from '../screens/purchase/GodownUnload';
 import PurchaseAislePhotoCapture from '../screens/purchase/PurchaseAislePhotoCapture';
 import PurchaseAislePhoto from '../screens/purchase/PurchaseAislePhoto';
 import PurchaseUnload from '../screens/purchase/PurchaseUnload';
@@ -178,8 +178,8 @@ const ApplicationNavigator = () => {
             }}
           />
           <Stack.Screen
-            name="PurchaseAisleScanner"
-            component={PurchaseAisleScanner}
+            name="GodownUnload"
+            component={GodownUnload}
             options={{
               title: 'purchaseGodownInfo',
             }}
