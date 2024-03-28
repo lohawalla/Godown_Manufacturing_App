@@ -4,7 +4,7 @@ import { Camera, useCameraDevices } from 'react-native-vision-camera';
 import QRAssign from '../Assign/QRAssign';
 import CodeScannerPage from '../../components/molecules/Scanner/CodeScannerPage';
 
-const PurchaseCamera = ({navigation, route}:any) => {
+const UnloadQR = ({navigation, route}:any) => {
   const [showScanner, setShowScanner] = useState(false);
   const [scannedValue, setScannedValue] = useState(null);
   const handleScannedValue = (value: any) => {
@@ -13,7 +13,7 @@ const PurchaseCamera = ({navigation, route}:any) => {
     setShowScanner(false);
   };
   const navigateToNextScreen=()=>{
-    navigation.navigate('purchaseGodown')
+    navigation.navigate('UnloadQR')
   }
   return (
         <CodeScannerPage
@@ -27,6 +27,6 @@ const PurchaseCamera = ({navigation, route}:any) => {
   )
 }
 
-export default PurchaseCamera
+export default UnloadQR
 
 const styles = StyleSheet.create({})
