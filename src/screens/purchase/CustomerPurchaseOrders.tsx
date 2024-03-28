@@ -9,22 +9,21 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import PartyListCard from '../../components/molecules/PartyListCard/PartyListCard'
 import PrimaryButton from '../../components/atoms/CustomButton/PrimaryButton'
 import InputWithSuggestion from '../../components/molecules/InputWithSuggestion/InputWithSuggestion'
-import { fetchSalesData } from '../../services/purchase/api'
 import { useSalesList } from '../../services/purchase/hooks'
 
-const CustomerPurchaseList = ({navigation}:any):JSX.Element => {
+const CustomerPurchaseOrders = ({navigation}:any):JSX.Element => {
   const [nextScan, setNextScan] = useState(true)
 
 
   const {data, isError, error, isLoading} = useSalesList();
 
   const next=(val:number)=>{
-    navigation.navigate("BillInfo", {id:val})
+    navigation.navigate("PurchaseOrder", {id:val})
     console.log(val)
   }
   
   const opencamera=()=>{
-    navigation.navigate("purchaseGodownCamera")
+    navigation.navigate("UnloadQR")
   }
   if (isLoading)
     return (
@@ -64,7 +63,7 @@ const CustomerPurchaseList = ({navigation}:any):JSX.Element => {
   )
 }
 
-export default CustomerPurchaseList
+export default CustomerPurchaseOrders
 
 const styles = StyleSheet.create({
   heading:{

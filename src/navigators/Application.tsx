@@ -41,21 +41,21 @@ import AisleList from '../screens/Assign/AisleList';
 import ShelfList from '../screens/Assign/ShelfList';
 import Popup from '../screens/Assign/Popup';
 import QRAssign from '../screens/Assign/QRAssign';
-import PurchaseList from '../screens/purchase/CustomerPurchaseList';
-import BillInfo from '../screens/purchase/PurchaseBillInfo';
+import CustomerPurchaseOrders from '../screens/purchase/CustomerPurchaseOrders';
+import PurchaseOrder from '../screens/purchase/PurchaseOrder';
 import AssignConfirm from '../screens/Assign/AssignConfirm';
 import Transfer from '../screens/Transfer/Transfer';
 import ConfirmDialogue from '../screens/Assign/ConfirmDialogue';
 import CapturePhoto from '../screens/Assign/CapturePhoto';
 import CapturePhotoConfirmation from '../screens/Assign/CapturePhotoConfirmation';
-import PurchaseGodown from '../screens/purchase/PurchaseGodown';
+import PurchaseAisleScanner from '../screens/purchase/PurchaseAisleScanner';
 import PurchaseAislePhotoCapture from '../screens/purchase/PurchaseAislePhotoCapture';
 import PurchaseAislePhoto from '../screens/purchase/PurchaseAislePhoto';
 import PurchaseUnload from '../screens/purchase/PurchaseUnload';
 import NotificationCard from '../components/molecules/Notification/NotificationCard';
 import Notifications from '../screens/Notifications/Notifications';
 import CustomerList from '../screens/purchase/CustomerList'
-import PurchaseCamera from '../screens/purchase/UnloadQR';
+import UnloadQR from '../screens/purchase/UnloadQR';
 
 const Stack = createStackNavigator<any>();
 const Tab = createBottomTabNavigator();
@@ -164,29 +164,29 @@ const ApplicationNavigator = () => {
               }}
             />
           <Stack.Screen
-            name="PurchaseList"
-            component={PurchaseList}
+            name="CustomerPurchaseOrders"
+            component={CustomerPurchaseOrders}
             options={{
               title: 'purchage Page',
             }}
           />
           <Stack.Screen
-            name="BillInfo"
-            component={BillInfo}
+            name="PurchaseOrder"
+            component={PurchaseOrder}
             options={{
               title: 'Bill Info',
             }}
           />
           <Stack.Screen
-            name="purchaseGodown"
-            component={PurchaseGodown}
+            name="PurchaseAisleScanner"
+            component={PurchaseAisleScanner}
             options={{
               title: 'purchaseGodownInfo',
             }}
           />
           <Stack.Screen
-            name="purchaseGodownCamera"
-            component={PurchaseCamera}
+            name="UnloadQR"
+            component={UnloadQR}
             options={{
               title: 'purchaseGodownCamera',
             }}

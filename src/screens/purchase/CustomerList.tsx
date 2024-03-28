@@ -1,19 +1,14 @@
 import { StyleSheet, Text, View,Button, Image, TouchableOpacity} from 'react-native'
 import React, { useState } from 'react'
 import Navbar from '../Navbar/Navbar'
-import ToggleButton from '../../components/molecules/ToggleHeader/ToggleButton'
-import axios from 'axios'
-import { useQuery } from '@tanstack/react-query'
 import { FlatList } from 'react-native-gesture-handler'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import PartyListCard from '../../components/molecules/PartyListCard/PartyListCard'
 import CustomerListCard from '../../components/molecules/PurchaseOrderList/CustomerListCard'
 import PrimaryButton from '../../components/atoms/CustomButton/PrimaryButton'
 import InputWithSuggestion from '../../components/molecules/InputWithSuggestion/InputWithSuggestion'
-import { fetchSalesData } from '../../services/purchase/api'
 import { usePurchaseParties, useSalesList } from '../../services/purchase/hooks'
 
-const PurchaseList = ({navigation}:any):JSX.Element => {
+const CustomerList = ({navigation}:any):JSX.Element => {
   const [nextScan, setNextScan] = useState(true)
 
 
@@ -21,11 +16,11 @@ const PurchaseList = ({navigation}:any):JSX.Element => {
   console.log('------->>>>>>>>> purchase parties',data?.result?.data)
 
   const next=(val:number)=>{
-    navigation.navigate("PurchaseList", {id:val})
+    navigation.navigate("CustomerPurchaseOrders", {id:val})
   }
   
   const opencamera=()=>{
-    navigation.navigate("purchaseGodownCamera")
+    navigation.navigate("UnloadQR")
   }
   if (isLoading)
     return (
@@ -65,7 +60,7 @@ const PurchaseList = ({navigation}:any):JSX.Element => {
   )
 }
 
-export default PurchaseList
+export default CustomerList
 
 const styles = StyleSheet.create({
   heading:{

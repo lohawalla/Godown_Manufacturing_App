@@ -8,7 +8,7 @@ import SecondaryButton from '../../components/atoms/CustomButton/SecondaryButton
 import { useRoute } from '@react-navigation/native'
 import PurchaseAislePhoto from './PurchaseAislePhoto'
 
-const PurchaseGodown = ({navigation}:any) => {
+const PurchaseAisleScanner = ({navigation}:any) => {
   // const route = useRoute();
   // const { id }:any = route.params;
   // console.log(id)
@@ -32,7 +32,7 @@ const PurchaseGodown = ({navigation}:any) => {
   )
 }
 
-export default PurchaseGodown
+export default PurchaseAisleScanner
 
 const styles = StyleSheet.create({
   component:{
